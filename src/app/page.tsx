@@ -11,7 +11,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import  Link  from "next/link";
+import Link from "next/link";
 
 export default function Home() {
   const { toast } = useToast();
@@ -46,11 +46,13 @@ export default function Home() {
           </CardContent>
           <CardFooter className="flex-col justify-center">
             <Link href="/novaCompra">
-            <Button className="bg-blue-700  hover:bg-blue-400">Entrar</Button>
+              <Button className="bg-blue-700  hover:bg-blue-400">Entrar</Button>
             </Link>
             <div className="justify-center pt-2  text-sm">
               <p className="flex justify-center">Problemas ao fazer login?</p>
-              <p className="flex justify-center">Fale com seu gerente ou envie um email para:</p>
+              <p className="flex justify-center">
+                Fale com seu gerente ou envie um email para:
+              </p>
               <div className="flex justify-center">
                 <Button
                   className="px-8 py-4 font-bold bg-transparent border-transparent text-black hover:bg-white "

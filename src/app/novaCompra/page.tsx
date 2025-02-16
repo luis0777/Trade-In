@@ -1,3 +1,9 @@
+import { Header } from "@/sections/header/header";
+
 export default function NovaCompra() {
-  return <h1>nova NovaCompra</h1>;
+  return (
+    <section>
+        <Header />
+    </section>
+  );
 }
