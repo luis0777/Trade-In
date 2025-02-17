@@ -11,15 +11,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { SidebarComponent } from "../sidebar/sidebar";
 
 export function Navbar() {
   const [selectedValue, setSelectedValue] = React.useState("portuguesBR");
 
   return (
-    <header className="w-full bg-blue-700 flex justify-between items-center px-4 py-2 text-white">
+    <header className="w-screen bg-blue-700 flex justify-between items-center px-4 py-2 text-white">
       {/* Lado esquerdo */}
       <div className="flex gap-4 items-center">
-        <div className=" flex items-center pl-5">a</div>
+        <div className=" flex items-center pl-5"> <SidebarComponent /></div>
         <div className="py-2">
           <Image
             src="/LogoAssurant.png"
