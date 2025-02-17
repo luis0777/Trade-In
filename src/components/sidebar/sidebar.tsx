@@ -33,8 +33,8 @@ import {
   UserPlus,
   Users,
   TicketCheck,
-  TriangleAlert ,
-  Link2    
+  TriangleAlert,
+  Link2,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -61,7 +61,10 @@ export function SidebarComponent() {
                 />
               </Button>
             </SheetTrigger>
-            <SheetContent side={side} className="w-[200px] sm:w-[325px] overflow-y-auto">
+            <SheetContent
+              side={side}
+              className="w-[200px] sm:w-[325px] overflow-y-auto"
+            >
               <SheetHeader>
                 <SheetTitle className="flex justify-start items-center pb-2">
                   <Image src="/Assurant.png" alt="" width={200} height={50} />
@@ -147,7 +150,7 @@ export function SidebarComponent() {
                 <>
                   <SheetTitle>
                     <Link
-                      href="/novaCompra"
+                      href="/perfil"
                       className="flex justify-start items-center p-4 pl-0 hover:bg-gray-200 hover:rounded-2xl"
                     >
                       <User className="mr-2 text-black" />
@@ -160,7 +163,7 @@ export function SidebarComponent() {
                       href="/novaCompra"
                       className="flex justify-start items-center p-4 pl-0 hover:bg-gray-200 hover:rounded-2xl"
                     >
-                      <LockKeyhole  className="mr-2 text-black" />
+                      <LockKeyhole className="mr-2 text-black" />
                       Trocar de senha
                     </Link>
                   </SheetTitle>
@@ -210,7 +213,7 @@ export function SidebarComponent() {
                       href="/novaCompra"
                       className="flex justify-start items-center p-4 pl-0 hover:bg-gray-200 hover:rounded-2xl"
                     >
-                      <TicketCheck  className="mr-2 text-black" />
+                      <TicketCheck className="mr-2 text-black" />
                       Confirmar Voucher
                     </Link>
                   </SheetTitle>
@@ -220,7 +223,7 @@ export function SidebarComponent() {
                       href="/novaCompra"
                       className="flex justify-start items-center p-4 pl-0 hover:bg-gray-200 hover:rounded-2xl"
                     >
-                      <TriangleAlert   className="mr-2 text-black" />
+                      <TriangleAlert className="mr-2 text-black" />
                       Motivos/Cancelamentos
                     </Link>
                   </SheetTitle>
@@ -230,7 +233,7 @@ export function SidebarComponent() {
                       href="/novaCompra"
                       className="flex justify-start items-center p-4 pl-0 hover:bg-gray-200 hover:rounded-2xl"
                     >
-                      <Link2  className="mr-2 text-black" />
+                      <Link2 className="mr-2 text-black" />
                       Vincular Item Compra
                     </Link>
                   </SheetTitle>
