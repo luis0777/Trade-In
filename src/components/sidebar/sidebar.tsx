@@ -49,7 +49,7 @@ export function SidebarComponent() {
     setIsOpen(!isOpen); // Alterna o estado de visibilidade
   };
   return (
-    <section>
+    <section className="z-[200]">
       <div className="gap-2">
         {SHEET_SIDES.map((side) => (
           <Sheet key={side}>

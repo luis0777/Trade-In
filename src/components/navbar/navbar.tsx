@@ -16,7 +16,7 @@ export function Navbar() {
   const [selectedValue, setSelectedValue] = React.useState("portuguesBR");
 
   return (
-    <header className="w-screen bg-blue-700 flex justify-between items-center px-4 py-2 text-white fixed top-0 z-[100]">
+    <header className="w-screen bg-blue-700 flex justify-between items-center px-4 py-2 text-white fixed top-0 z-[50]">
       {/* Lado esquerdo */}
       <div className="flex gap-4 items-center">
         <div className=" flex items-center pl-5"> <SidebarComponent /></div>
