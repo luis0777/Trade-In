@@ -1,3 +1,5 @@
+"use client";
+
 import { Footer } from "@/components/footer/footer";
 import { Navbar } from "@/components/navbar/navbar";
 import { Button } from "@/components/ui/button";
@@ -11,17 +13,14 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Link from "next/link";
+import { useToast } from "@/hooks/use-toast";
 
 export default function CadastrarColaboradores() {
+  const { toast } = useToast();
+
   return (
     <section className="w-full h-screen  flex flex-col justify-center ">
       <Navbar />
@@ -102,7 +101,16 @@ export default function CadastrarColaboradores() {
                 </form>
               </CardContent>
               <CardFooter className="flex justify-center">
-                <Button className="bg-blue-700 w-full">
+                <Button
+                  className="bg-blue-700 w-full"
+                  onClick={() => {
+                    toast({
+                      title: "Sucesso!!!",
+                      description: "Cadastro realizado com sucesso",
+                      className: "bg-green-50 text-green-500",
+                    });
+                  }}
+                >
                   Finalizar cadastro
                 </Button>
               </CardFooter>
