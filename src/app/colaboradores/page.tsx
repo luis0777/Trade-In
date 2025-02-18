@@ -26,7 +26,7 @@ import { Switch } from "@/components/ui/switch";
 import Link from "next/link";
 import { Toaster } from "@/components/ui/toaster";
 
-const data = [
+const colaborador = [
   {
     isActive: true,
     nome: "Nestor",
@@ -167,7 +167,7 @@ const data = [
 
 export default function Page() {
   const [currentPage, setCurrentPage] = useState(1);
-  const [colaboradores, setColaboradores] = useState(data);
+  const [colaboradores, setColaboradores] = useState(colaborador);
   const rowsPerPage = 10;
 
   const toggleStatus = (index: number) => {
@@ -255,7 +255,7 @@ export default function Page() {
                   className="cursor-pointer"
                 />
               </PaginationItem>
-              {[...Array(Math.ceil(data.length / rowsPerPage)).keys()].map(
+              {[...Array(Math.ceil(colaborador.length / rowsPerPage)).keys()].map(
                 (number) => (
                   <PaginationItem key={number + 1}>
                     <PaginationLink
@@ -272,7 +272,7 @@ export default function Page() {
                 <PaginationNext
                   onClick={() =>
                     paginate(
-                      currentPage < Math.ceil(data.length / rowsPerPage)
+                      currentPage < Math.ceil(colaborador.length / rowsPerPage)
                         ? currentPage + 1
                         : currentPage
                     )
