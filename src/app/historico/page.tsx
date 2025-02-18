@@ -236,304 +236,6 @@ const loja = [
     STATUSATUAL: "APARELHO PERDIDO",
     VALORCONSUMIDOR: "R$ 2.700,00",
   },
-
-  {
-    ID: "1967",
-    IMEI: "356656423411941",
-    DATA: "10/11/2024",
-    CLIENTE: "JOÃO",
-    VENDEDOR: "Carlos",
-    PRODUTO: "SAMSUNG GALAXY S22",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO PERDIDO",
-    VALORCONSUMIDOR: "R$ 2.500,00",
-  },
-  {
-    ID: "1968",
-    IMEI: "356656423411942",
-    DATA: "05/10/2024",
-    CLIENTE: "MARIA",
-    VENDEDOR: "Fernanda",
-    PRODUTO: "IPHONE 14 PRO",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO EM LOJA",
-    VALORCONSUMIDOR: "R$ 6.200,00",
-  },
-  {
-    ID: "1969",
-    IMEI: "356656423411943",
-    DATA: "25/09/2024",
-    CLIENTE: "ANTÔNIO",
-    VENDEDOR: "Ricardo",
-    PRODUTO: "XIAOMI MI 11",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO PERDIDO",
-    VALORCONSUMIDOR: "R$ 3.100,00",
-  },
-  {
-    ID: "1970",
-    IMEI: "356656423411944",
-    DATA: "15/08/2024",
-    CLIENTE: "LUCAS",
-    VENDEDOR: "Bruna",
-    PRODUTO: "MOTOROLA EDGE 30",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO EM LOJA",
-    VALORCONSUMIDOR: "R$ 2.800,00",
-  },
-  {
-    ID: "1971",
-    IMEI: "356656423411945",
-    DATA: "12/07/2024",
-    CLIENTE: "FERNANDA",
-    VENDEDOR: "Marcos",
-    PRODUTO: "IPHONE 12",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO PERDIDO",
-    VALORCONSUMIDOR: "R$ 4.500,00",
-  },
-  {
-    ID: "1972",
-    IMEI: "356656423411946",
-    DATA: "30/06/2024",
-    CLIENTE: "DANIEL",
-    VENDEDOR: "Patrícia",
-    PRODUTO: "SAMSUNG GALAXY S21",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO EM LOJA",
-    VALORCONSUMIDOR: "R$ 3.900,00",
-  },
-  {
-    ID: "1973",
-    IMEI: "356656423411947",
-    DATA: "10/05/2024",
-    CLIENTE: "GABRIEL",
-    VENDEDOR: "Júlia",
-    PRODUTO: "IPHONE 13 MINI",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO PERDIDO",
-    VALORCONSUMIDOR: "R$ 5.100,00",
-  },
-  {
-    ID: "1974",
-    IMEI: "356656423411948",
-    DATA: "15/04/2024",
-    CLIENTE: "ANA",
-    VENDEDOR: "Roberto",
-    PRODUTO: "XIAOMI REDMI NOTE 11",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO EM LOJA",
-    VALORCONSUMIDOR: "R$ 2.100,00",
-  },
-  {
-    ID: "1975",
-    IMEI: "356656423411949",
-    DATA: "22/03/2024",
-    CLIENTE: "CARLOS",
-    VENDEDOR: "Paula",
-    PRODUTO: "SAMSUNG GALAXY A73",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO PERDIDO",
-    VALORCONSUMIDOR: "R$ 2.700,00",
-  },
-  {
-    ID: "1967",
-    IMEI: "356656423411941",
-    DATA: "10/11/2024",
-    CLIENTE: "JOÃO",
-    VENDEDOR: "Carlos",
-    PRODUTO: "SAMSUNG GALAXY S22",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO PERDIDO",
-    VALORCONSUMIDOR: "R$ 2.500,00",
-  },
-  {
-    ID: "1968",
-    IMEI: "356656423411942",
-    DATA: "05/10/2024",
-    CLIENTE: "MARIA",
-    VENDEDOR: "Fernanda",
-    PRODUTO: "IPHONE 14 PRO",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO EM LOJA",
-    VALORCONSUMIDOR: "R$ 6.200,00",
-  },
-  {
-    ID: "1969",
-    IMEI: "356656423411943",
-    DATA: "25/09/2024",
-    CLIENTE: "ANTÔNIO",
-    VENDEDOR: "Ricardo",
-    PRODUTO: "XIAOMI MI 11",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO PERDIDO",
-    VALORCONSUMIDOR: "R$ 3.100,00",
-  },
-  {
-    ID: "1970",
-    IMEI: "356656423411944",
-    DATA: "15/08/2024",
-    CLIENTE: "LUCAS",
-    VENDEDOR: "Bruna",
-    PRODUTO: "MOTOROLA EDGE 30",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO EM LOJA",
-    VALORCONSUMIDOR: "R$ 2.800,00",
-  },
-  {
-    ID: "1971",
-    IMEI: "356656423411945",
-    DATA: "12/07/2024",
-    CLIENTE: "FERNANDA",
-    VENDEDOR: "Marcos",
-    PRODUTO: "IPHONE 12",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO PERDIDO",
-    VALORCONSUMIDOR: "R$ 4.500,00",
-  },
-  {
-    ID: "1972",
-    IMEI: "356656423411946",
-    DATA: "30/06/2024",
-    CLIENTE: "DANIEL",
-    VENDEDOR: "Patrícia",
-    PRODUTO: "SAMSUNG GALAXY S21",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO EM LOJA",
-    VALORCONSUMIDOR: "R$ 3.900,00",
-  },
-  {
-    ID: "1973",
-    IMEI: "356656423411947",
-    DATA: "10/05/2024",
-    CLIENTE: "GABRIEL",
-    VENDEDOR: "Júlia",
-    PRODUTO: "IPHONE 13 MINI",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO PERDIDO",
-    VALORCONSUMIDOR: "R$ 5.100,00",
-  },
-  {
-    ID: "1974",
-    IMEI: "356656423411948",
-    DATA: "15/04/2024",
-    CLIENTE: "ANA",
-    VENDEDOR: "Roberto",
-    PRODUTO: "XIAOMI REDMI NOTE 11",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO EM LOJA",
-    VALORCONSUMIDOR: "R$ 2.100,00",
-  },
-  {
-    ID: "1975",
-    IMEI: "356656423411949",
-    DATA: "22/03/2024",
-    CLIENTE: "CARLOS",
-    VENDEDOR: "Paula",
-    PRODUTO: "SAMSUNG GALAXY A73",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO PERDIDO",
-    VALORCONSUMIDOR: "R$ 2.700,00",
-  },
-  {
-    ID: "1967",
-    IMEI: "356656423411941",
-    DATA: "10/11/2024",
-    CLIENTE: "JOÃO",
-    VENDEDOR: "Carlos",
-    PRODUTO: "SAMSUNG GALAXY S22",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO PERDIDO",
-    VALORCONSUMIDOR: "R$ 2.500,00",
-  },
-  {
-    ID: "1968",
-    IMEI: "356656423411942",
-    DATA: "05/10/2024",
-    CLIENTE: "MARIA",
-    VENDEDOR: "Fernanda",
-    PRODUTO: "IPHONE 14 PRO",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO EM LOJA",
-    VALORCONSUMIDOR: "R$ 6.200,00",
-  },
-  {
-    ID: "1969",
-    IMEI: "356656423411943",
-    DATA: "25/09/2024",
-    CLIENTE: "ANTÔNIO",
-    VENDEDOR: "Ricardo",
-    PRODUTO: "XIAOMI MI 11",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO PERDIDO",
-    VALORCONSUMIDOR: "R$ 3.100,00",
-  },
-  {
-    ID: "1970",
-    IMEI: "356656423411944",
-    DATA: "15/08/2024",
-    CLIENTE: "LUCAS",
-    VENDEDOR: "Bruna",
-    PRODUTO: "MOTOROLA EDGE 30",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO EM LOJA",
-    VALORCONSUMIDOR: "R$ 2.800,00",
-  },
-  {
-    ID: "1971",
-    IMEI: "356656423411945",
-    DATA: "12/07/2024",
-    CLIENTE: "FERNANDA",
-    VENDEDOR: "Marcos",
-    PRODUTO: "IPHONE 12",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO PERDIDO",
-    VALORCONSUMIDOR: "R$ 4.500,00",
-  },
-  {
-    ID: "1972",
-    IMEI: "356656423411946",
-    DATA: "30/06/2024",
-    CLIENTE: "DANIEL",
-    VENDEDOR: "Patrícia",
-    PRODUTO: "SAMSUNG GALAXY S21",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO EM LOJA",
-    VALORCONSUMIDOR: "R$ 3.900,00",
-  },
-  {
-    ID: "1973",
-    IMEI: "356656423411947",
-    DATA: "10/05/2024",
-    CLIENTE: "GABRIEL",
-    VENDEDOR: "Júlia",
-    PRODUTO: "IPHONE 13 MINI",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO PERDIDO",
-    VALORCONSUMIDOR: "R$ 5.100,00",
-  },
-  {
-    ID: "1974",
-    IMEI: "356656423411948",
-    DATA: "15/04/2024",
-    CLIENTE: "ANA",
-    VENDEDOR: "Roberto",
-    PRODUTO: "XIAOMI REDMI NOTE 11",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO EM LOJA",
-    VALORCONSUMIDOR: "R$ 2.100,00",
-  },
-  {
-    ID: "1975",
-    IMEI: "356656423411949",
-    DATA: "22/03/2024",
-    CLIENTE: "CARLOS",
-    VENDEDOR: "Paula",
-    PRODUTO: "SAMSUNG GALAXY A73",
-    STATUS: "PAGO",
-    STATUSATUAL: "APARELHO PERDIDO",
-    VALORCONSUMIDOR: "R$ 2.700,00",
-  },
 ];
 
 export default function Historico() {
@@ -553,24 +255,31 @@ export default function Historico() {
     setIsCalendarOpenEnd(false);
   };
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPageLoja, setCurrentPageLoja] = useState(1);
+  const [currentPageHistorico, setCurrentPageHistorico] = useState(1);
   const rowsPerPage = 10;
 
-  const indexOfLastRow = currentPage * rowsPerPage;
-  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const currentRows = loja.slice(indexOfFirstRow, indexOfLastRow);
+  const currentRowsLoja = loja.slice(
+    (currentPageLoja - 1) * rowsPerPage,
+    currentPageLoja * rowsPerPage
+  );
 
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  const currentRowsHistorico = loja.slice(
+    (currentPageHistorico - 1) * rowsPerPage,
+    currentPageHistorico * rowsPerPage
+  );
+
+  const paginateLoja = (pageNumber: number) => setCurrentPageLoja(pageNumber);
+  const paginateHistorico = (pageNumber: number) =>
+    setCurrentPageHistorico(pageNumber);
 
   return (
-    <section>
+    <section className="flex  h-screen justify-center items-center">
       <Navbar />
-      <div className="p-16">
-        <div className="">
-          {" "}
-          <Tabs defaultValue="account" className="w-full">
+      <div className="">
+        <div className="w-screen flex justify-center ">
+          <Tabs defaultValue="account" className="w-[112rem] ">
             <div className="">
-              {" "}
               <TabsList>
                 <TabsTrigger value="account">Na Loja</TabsTrigger>
                 <TabsTrigger value="password">Histórico</TabsTrigger>
@@ -642,7 +351,7 @@ export default function Historico() {
                     </TableHeader>
 
                     <TableBody>
-                      {currentRows.map((row, index) => (
+                      {currentRowsLoja.map((row, index) => (
                         <TableRow key={index}>
                           <TableCell className="">{row.ID}</TableCell>
 
@@ -672,8 +381,10 @@ export default function Historico() {
                       <PaginationItem>
                         <PaginationPrevious
                           onClick={() =>
-                            paginate(
-                              currentPage > 1 ? currentPage - 1 : currentPage
+                            paginateLoja(
+                              currentPageLoja > 1
+                                ? currentPageLoja - 1
+                                : currentPageLoja
                             )
                           }
                           className="cursor-pointer"
@@ -684,8 +395,8 @@ export default function Historico() {
                       ].map((number) => (
                         <PaginationItem key={number + 1}>
                           <PaginationLink
-                            onClick={() => paginate(number + 1)}
-                            isActive={currentPage === number + 1}
+                            onClick={() => paginateLoja(number + 1)}
+                            isActive={currentPageLoja === number + 1}
                             className="cursor-pointer"
                           >
                             {number + 1}
@@ -695,10 +406,11 @@ export default function Historico() {
                       <PaginationItem>
                         <PaginationNext
                           onClick={() =>
-                            paginate(
-                              currentPage < Math.ceil(loja.length / rowsPerPage)
-                                ? currentPage + 1
-                                : currentPage
+                            paginateLoja(
+                              currentPageLoja <
+                                Math.ceil(loja.length / rowsPerPage)
+                                ? currentPageLoja + 1
+                                : currentPageLoja
                             )
                           }
                           className="cursor-pointer"
@@ -710,7 +422,6 @@ export default function Historico() {
               </TabsContent>
               <TabsContent value="password">
                 <div className="mt-4 p-4 pt-2">
-
                   {/* Data */}
                   <div className="flex justify-center items-end gap-6 mb-4">
                     {/* Campos de Data */}
@@ -842,7 +553,7 @@ export default function Historico() {
                     </TableHeader>
 
                     <TableBody>
-                      {currentRows.map((row, index) => (
+                      {currentRowsHistorico.map((row, index) => (
                         <TableRow key={index}>
                           <TableCell className="">{row.ID}</TableCell>
 
@@ -867,8 +578,10 @@ export default function Historico() {
                       <PaginationItem>
                         <PaginationPrevious
                           onClick={() =>
-                            paginate(
-                              currentPage > 1 ? currentPage - 1 : currentPage
+                            paginateHistorico(
+                              currentPageHistorico > 1
+                                ? currentPageHistorico - 1
+                                : currentPageHistorico
                             )
                           }
                           className="cursor-pointer"
@@ -879,8 +592,8 @@ export default function Historico() {
                       ].map((number) => (
                         <PaginationItem key={number + 1}>
                           <PaginationLink
-                            onClick={() => paginate(number + 1)}
-                            isActive={currentPage === number + 1}
+                            onClick={() => paginateHistorico(number + 1)}
+                            isActive={currentPageHistorico === number + 1}
                             className="cursor-pointer"
                           >
                             {number + 1}
@@ -890,10 +603,11 @@ export default function Historico() {
                       <PaginationItem>
                         <PaginationNext
                           onClick={() =>
-                            paginate(
-                              currentPage < Math.ceil(loja.length / rowsPerPage)
-                                ? currentPage + 1
-                                : currentPage
+                            paginateHistorico(
+                              currentPageHistorico <
+                                Math.ceil(loja.length / rowsPerPage)
+                                ? currentPageHistorico + 1
+                                : currentPageHistorico
                             )
                           }
                           className="cursor-pointer"
