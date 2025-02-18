@@ -44,7 +44,7 @@ export default function Perfil() {
   };
 
   return (
-    <section className="">
+    <section className="py-52">
         <Toaster />
       <Navbar />
 

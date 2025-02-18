@@ -190,7 +190,7 @@ export function SidebarComponent() {
 
                   <SheetTitle>
                     <Link
-                      href="/novaCompra"
+                      href="/cadastrarColaboradores"
                       className="flex justify-start items-center p-4 pl-0 hover:bg-gray-200 hover:rounded-2xl"
                     >
                       <UserPlus className="mr-2 text-black" />

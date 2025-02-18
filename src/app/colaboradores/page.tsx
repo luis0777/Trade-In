@@ -158,7 +158,7 @@ export default function Page() {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
-    <section>
+    <section className="py-20">
       <Navbar />
 
       <div>
