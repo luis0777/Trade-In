@@ -133,7 +133,7 @@ export function SidebarComponent() {
 
               <SheetTitle>
                 <Link
-                  href="/novaCompra"
+                  href="#"
                   className="flex justify-start items-center p-4 pl-0 gap-36 hover:bg-gray-200 hover:rounded-2xl"
                   onClick={toggleMenu}
                 >
@@ -200,7 +200,7 @@ export function SidebarComponent() {
 
                   <SheetTitle>
                     <Link
-                      href="/novaCompra"
+                      href="/colaboradores"
                       className="flex justify-start items-center p-4 pl-0 hover:bg-gray-200 hover:rounded-2xl"
                     >
                       <Users className="mr-2 text-black" />
