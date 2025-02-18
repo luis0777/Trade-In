@@ -23,6 +23,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Pencil, LockKeyhole } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
+import Link from "next/link";
 
 const data = [
   {
@@ -246,6 +247,9 @@ export default function Page() {
               </PaginationItem>
             </PaginationContent>
           </Pagination>
+          <Link href="/cadastrarColaboradores" className="justify-end flex  rounded-md "> 
+            <Button className="bg-blue-700">Adicionar colaborador</Button>
+          </Link>
         </div>
       </div>
 
