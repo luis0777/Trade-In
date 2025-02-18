@@ -2,10 +2,11 @@
 
 import { Footer } from "@/components/footer/footer";
 import { Navbar } from "@/components/navbar/navbar";
+import { EditarColaborador } from "@/components/editarColaborador/editarColaborador";
+import { AlterarSenhaColaborador } from "@/components/alterarSenhaColaborador/alterarSenhaColaborador";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -21,12 +22,13 @@ import {
 } from "@/components/ui/pagination";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Pencil, LockKeyhole } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
+import Link from "next/link";
+import { Toaster } from "@/components/ui/toaster";
 
-const data = [
+const colaborador = [
   {
-    status: "Ativo",
+    isActive: true,
     nome: "Nestor",
     lojas: "HOMOLOG-000163_002C&V",
     editar: "",
@@ -34,7 +36,7 @@ const data = [
     senha: "",
   },
   {
-    status: "Ativo",
+    isActive: false,
     nome: "Nestor",
     lojas: "HOMOLOG-000163_002C&V",
     editar: "",
@@ -42,7 +44,7 @@ const data = [
     senha: "",
   },
   {
-    status: "Ativo",
+    isActive: true,
     nome: "Nestor",
     lojas: "HOMOLOG-000163_002C&V",
     editar: "",
@@ -50,7 +52,7 @@ const data = [
     senha: "",
   },
   {
-    status: "Ativo",
+    isActive: false,
     nome: "Nestor",
     lojas: "HOMOLOG-000163_002C&V",
     editar: "",
@@ -58,7 +60,7 @@ const data = [
     senha: "",
   },
   {
-    status: "Ativo",
+    isActive: true,
     nome: "Nestor",
     lojas: "HOMOLOG-000163_002C&V",
     editar: "",
@@ -66,7 +68,7 @@ const data = [
     senha: "",
   },
   {
-    status: "Ativo",
+    isActive: false,
     nome: "Nestor",
     lojas: "HOMOLOG-000163_002C&V",
     editar: "",
@@ -74,7 +76,7 @@ const data = [
     senha: "",
   },
   {
-    status: "Ativo",
+    isActive: true,
     nome: "Nestor",
     lojas: "HOMOLOG-000163_002C&V",
     editar: "",
@@ -82,7 +84,7 @@ const data = [
     senha: "",
   },
   {
-    status: "Ativo",
+    isActive: false,
     nome: "Nestor",
     lojas: "HOMOLOG-000163_002C&V",
     editar: "",
@@ -90,7 +92,7 @@ const data = [
     senha: "",
   },
   {
-    status: "Ativo",
+    isActive: true,
     nome: "Nestor",
     lojas: "HOMOLOG-000163_002C&V",
     editar: "",
@@ -98,7 +100,7 @@ const data = [
     senha: "",
   },
   {
-    status: "Ativo",
+    isActive: false,
     nome: "Nestor",
     lojas: "HOMOLOG-000163_002C&V",
     editar: "",
@@ -106,7 +108,7 @@ const data = [
     senha: "",
   },
   {
-    status: "Ativo",
+    isActive: true,
     nome: "Nestor",
     lojas: "HOMOLOG-000163_002C&V",
     editar: "",
@@ -114,7 +116,7 @@ const data = [
     senha: "",
   },
   {
-    status: "Ativo",
+    isActive: false,
     nome: "Nestor",
     lojas: "HOMOLOG-000163_002C&V",
     editar: "",
@@ -122,7 +124,7 @@ const data = [
     senha: "",
   },
   {
-    status: "Ativo",
+    isActive: true,
     nome: "Nestor",
     lojas: "HOMOLOG-000163_002C&V",
     editar: "",
@@ -130,7 +132,7 @@ const data = [
     senha: "",
   },
   {
-    status: "Ativo",
+    isActive: false,
     nome: "Nestor",
     lojas: "HOMOLOG-000163_002C&V",
     editar: "",
@@ -138,7 +140,23 @@ const data = [
     senha: "",
   },
   {
-    status: "Ativo",
+    isActive: true,
+    nome: "Nestor",
+    lojas: "HOMOLOG-000163_002C&V",
+    editar: "",
+    acesso: "",
+    senha: "",
+  },
+  {
+    isActive: false,
+    nome: "Nestor",
+    lojas: "HOMOLOG-000163_002C&V",
+    editar: "",
+    acesso: "",
+    senha: "",
+  },
+  {
+    isActive: true,
     nome: "Nestor",
     lojas: "HOMOLOG-000163_002C&V",
     editar: "",
@@ -149,16 +167,30 @@ const data = [
 
 export default function Page() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [colaboradores, setColaboradores] = useState(colaborador);
   const rowsPerPage = 10;
+
+  const toggleStatus = (index: number) => {
+    setColaboradores((prevState) => {
+      const newState = [...prevState];
+      newState[index] = {
+        ...newState[index],
+        isActive: !newState[index].isActive,
+      };
+      return newState;
+    });
+  };
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const currentRows = data.slice(indexOfFirstRow, indexOfLastRow);
+
+  const currentRows = colaboradores.slice(indexOfFirstRow, indexOfLastRow);
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
-    <section>
+    <section className="py-16">
+      <Toaster />
       <Navbar />
 
       <div>
@@ -187,21 +219,25 @@ export default function Page() {
             <TableBody>
               {currentRows.map((row, index) => (
                 <TableRow key={index}>
-                  <TableCell className="font-medium">{row.status}</TableCell>
+                  <TableCell className="font-medium">
+                    {row.isActive ? "ATIVO" : "INATIVO"}
+                  </TableCell>
                   <TableCell>{row.nome}</TableCell>
                   <TableCell>{row.lojas}</TableCell>
                   <TableCell className="text-right">
-                    <Button className="bg-white hover:bg-blue-50 ">
-                      <Pencil className="text-blue-500" />
-                    </Button>
+                    <EditarColaborador />
                   </TableCell>
                   <TableCell className="text-right">
-                    <Switch className="bg-blue-700"></Switch>
+                    <Switch
+                      checked={row.isActive}
+                      onCheckedChange={() =>
+                        toggleStatus(index + indexOfFirstRow)
+                      }
+                      className="bg-blue-700"
+                    />
                   </TableCell>
                   <TableCell className="text-right">
-                    <Button className="bg-white hover:bg-red-50 ">
-                      <LockKeyhole className="text-red-500" />
-                    </Button>
+                    <AlterarSenhaColaborador />
                   </TableCell>
                 </TableRow>
               ))}
@@ -219,7 +255,7 @@ export default function Page() {
                   className="cursor-pointer"
                 />
               </PaginationItem>
-              {[...Array(Math.ceil(data.length / rowsPerPage)).keys()].map(
+              {[...Array(Math.ceil(colaborador.length / rowsPerPage)).keys()].map(
                 (number) => (
                   <PaginationItem key={number + 1}>
                     <PaginationLink
@@ -236,7 +272,7 @@ export default function Page() {
                 <PaginationNext
                   onClick={() =>
                     paginate(
-                      currentPage < Math.ceil(data.length / rowsPerPage)
+                      currentPage < Math.ceil(colaborador.length / rowsPerPage)
                         ? currentPage + 1
                         : currentPage
                     )
@@ -246,6 +282,12 @@ export default function Page() {
               </PaginationItem>
             </PaginationContent>
           </Pagination>
+          <Link
+            href="/cadastrarColaboradores"
+            className="justify-end flex  rounded-md "
+          >
+            <Button className="bg-blue-700">Adicionar colaborador</Button>
+          </Link>
         </div>
       </div>
 

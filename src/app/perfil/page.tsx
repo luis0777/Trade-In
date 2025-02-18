@@ -44,7 +44,7 @@ export default function Perfil() {
   };
 
   return (
-    <section className="">
+    <section className="py-52">
         <Toaster />
       <Navbar />
 
@@ -183,6 +183,7 @@ export default function Perfil() {
                     toast({
                       title: "Erro!",
                       description: "Em manutenção",
+                      className: "bg-red-600 text-white",
                       duration: 2000,
                     });
                   }}

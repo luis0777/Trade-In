@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Head from "next/head";
 import { Toaster } from "@/components/ui/toaster";
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,18 +15,18 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Assurant Trade-In",
+  icons: {
+    icon: "/favicon.ico",
+  }
 };
 
 export default function RootLayout({
-  children, 
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="pt-br">
-      <Head>
-        <link rel="icon" href="/public/favicon.png" sizes="any" />
-      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
