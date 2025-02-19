@@ -93,7 +93,7 @@ export function SidebarComponent() {
 
               <SheetTitle>
                 <Link
-                  href="/novaCompra"
+                  href="/malaDespacho"
                   className="flex justify-start items-center p-4 pl-0 hover:bg-gray-200 hover:rounded-2xl"
                 >
                   <Briefcase className="mr-2 text-black" />
@@ -103,7 +103,7 @@ export function SidebarComponent() {
 
               <SheetTitle>
                 <Link
-                  href="/novaCompra"
+                  href="/aparelhoPerdido"
                   className="flex justify-start items-center p-4 pl-0 hover:bg-gray-200 hover:rounded-2xl"
                 >
                   <Smartphone className="mr-2 text-black" />
@@ -230,7 +230,7 @@ export function SidebarComponent() {
 
                   <SheetTitle>
                     <Link
-                      href="/novaCompra"
+                      href="/item-Compra"
                       className="flex justify-start items-center p-4 pl-0 hover:bg-gray-200 hover:rounded-2xl"
                     >
                       <Link2 className="mr-2 text-black" />
