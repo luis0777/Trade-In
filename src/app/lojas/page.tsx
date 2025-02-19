@@ -19,114 +19,101 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
 import Link from "next/link";
-import { Toaster } from "@/components/ui/toaster";
 import { useState } from "react";
 import { RemoverLoja } from "@/components/removerLoja/removerLoja";
-import { Plus } from "lucide-react";
+import { Plus, Pencil } from "lucide-react";
 
 const loja = [
-    {
-      nome: "HOMOLOG-000163_002C&V",
-      identificador: "000163_002CEV",
-      editar: "",
-      remover: "",
-    },
-    {
-      nome: "HOMOLOG-000163_002C&V",
-      identificador: "000163_002CEV",
-      editar: "",
-      remover: "",
-    },
-    {
-      nome: "HOMOLOG-000163_002C&V",
-      identificador: "000163_002CEV",
-      editar: "",
-      remover: "",
-    },
-    {
-      nome: "HOMOLOG-000163_002C&V",
-      identificador: "000163_002CEV",
-      editar: "",
-      remover: "",
-    },
-    {
-      nome: "HOMOLOG-000163_002C&V",
-      identificador: "000163_002CEV",
-      editar: "",
-      remover: "",
-    },
-    {
-      nome: "HOMOLOG-000163_002C&V",
-      identificador: "000163_002CEV",
-      editar: "",
-      remover: "",
-    },
-    {
-      nome: "HOMOLOG-000163_002C&V",
-      identificador: "000163_002CEV",
-      editar: "",
-      remover: "",
-    },
-    {
-      nome: "HOMOLOG-000163_002C&V",
-      identificador: "000163_002CEV",
-      editar: "",
-      remover: "",
-    },
-    {
-      nome: "HOMOLOG-000163_002C&V",
-      identificador: "000163_002CEV",
-      editar: "",
-      remover: "",
-    },
-    {
-      nome: "HOMOLOG-000163_002C&V",
-      identificador: "000163_002CEV",
-      editar: "",
-      remover: "",
-    },
-    {
-      nome: "HOMOLOG-000163_002C&V",
-      identificador: "000163_002CEV",
-      editar: "",
-      remover: "",
-    },
-    {
-      nome: "HOMOLOG-000163_002C&V",
-      identificador: "000163_002CEV",
-      editar: "",
-      remover: "",
-    },
-]
+  {
+    nome: "HOMOLOG-000163_002C&V",
+    identificador: "000163_002CEV",
+    editar: "",
+    remover: "",
+  },
+  {
+    nome: "HOMOLOG-000163_002C&V",
+    identificador: "000163_002CEV",
+    editar: "",
+    remover: "",
+  },
+  {
+    nome: "HOMOLOG-000163_002C&V",
+    identificador: "000163_002CEV",
+    editar: "",
+    remover: "",
+  },
+  {
+    nome: "HOMOLOG-000163_002C&V",
+    identificador: "000163_002CEV",
+    editar: "",
+    remover: "",
+  },
+  {
+    nome: "HOMOLOG-000163_002C&V",
+    identificador: "000163_002CEV",
+    editar: "",
+    remover: "",
+  },
+  {
+    nome: "HOMOLOG-000163_002C&V",
+    identificador: "000163_002CEV",
+    editar: "",
+    remover: "",
+  },
+  {
+    nome: "HOMOLOG-000163_002C&V",
+    identificador: "000163_002CEV",
+    editar: "",
+    remover: "",
+  },
+  {
+    nome: "HOMOLOG-000163_002C&V",
+    identificador: "000163_002CEV",
+    editar: "",
+    remover: "",
+  },
+  {
+    nome: "HOMOLOG-000163_002C&V",
+    identificador: "000163_002CEV",
+    editar: "",
+    remover: "",
+  },
+  {
+    nome: "HOMOLOG-000163_002C&V",
+    identificador: "000163_002CEV",
+    editar: "",
+    remover: "",
+  },
+  {
+    nome: "HOMOLOG-000163_002C&V",
+    identificador: "000163_002CEV",
+    editar: "",
+    remover: "",
+  },
+  {
+    nome: "HOMOLOG-000163_002C&V",
+    identificador: "000163_002CEV",
+    editar: "",
+    remover: "",
+  },
+];
 
 export default function Lojas() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [colaboradores, setColaboradores] = useState(loja);
+  const rowsPerPage = 10;
 
-    const [currentPage, setCurrentPage] = useState(1);
-      const [colaboradores, setColaboradores] = useState(loja);
-      const rowsPerPage = 10;
-    
-      const indexOfLastRow = currentPage * rowsPerPage;
-      const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
 
-      const currentRows = colaboradores.slice(indexOfFirstRow, indexOfLastRow);
-    
-    
-      const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  const currentRows = colaboradores.slice(indexOfFirstRow, indexOfLastRow);
 
-
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <section className="py-16">
       <Navbar />
-
-
-
-
-
-
-
 
       <div>
         <div className="w-full">
@@ -138,7 +125,9 @@ export default function Lojas() {
             <TableHeader>
               <TableRow className="bg-gray-100 ">
                 <TableHead className=" font-bold text-black">Nome</TableHead>
-                <TableHead className=" font-bold text-black">Identificador</TableHead>
+                <TableHead className=" font-bold text-black">
+                  Identificador
+                </TableHead>
                 <TableHead className="text-right font-bold text-black w-1/6">
                   Editar
                 </TableHead>
@@ -150,13 +139,16 @@ export default function Lojas() {
             <TableBody>
               {currentRows.map((row, index) => (
                 <TableRow key={index}>
-                  
                   <TableCell>{row.nome}</TableCell>
                   <TableCell>{row.identificador}</TableCell>
                   <TableCell className="text-right">
-                    
+                    <Link href="/editarLoja">
+                    <Button className="bg-white hover:bg-blue-50">
+                      <Pencil className="text-blue-500" />
+                    </Button>
+                    </Link>
                   </TableCell>
-                  
+
                   <TableCell className="text-right">
                     <RemoverLoja />
                   </TableCell>
@@ -208,45 +200,12 @@ export default function Lojas() {
             className="justify-end flex  rounded-md "
           >
             <Button className="bg-blue-700">
-                <Plus />
-                Adicionar loja</Button>
+              <Plus />
+              Adicionar loja
+            </Button>
           </Link>
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       <Footer />
     </section>
