@@ -22,7 +22,6 @@ export function AlterarSenhaColaborador() {
     toast({
       title: "Senha salva!",
       description: "Senha alterada com sucesso!",
-      className: "bg-green-50 text-green-500",
       duration: 2500,
     });
   };

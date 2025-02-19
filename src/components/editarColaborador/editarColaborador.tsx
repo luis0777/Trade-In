@@ -30,7 +30,6 @@ export function EditarColaborador() {
     toast({
       title: "Alterações salvas",
       description: "As informações foram atualizadas com sucesso!",
-      className: "bg-green-50 text-green-500",
       duration: 2500,
     });
   };

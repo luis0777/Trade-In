@@ -274,10 +274,10 @@ export default function Historico() {
     setCurrentPageHistorico(pageNumber);
 
   return (
-    <section className="flex  h-screen justify-center items-center">
+    <section className="flex  h-screen justify-center items-center ">
       <Navbar />
-      <div className="">
-        <div className="w-screen flex justify-center ">
+      <div className="pt-32 pb-12">
+        <div className="w-screen flex justify-center px-20">
           <Tabs defaultValue="account" className="w-[112rem] ">
             <div className="">
               <TabsList>
