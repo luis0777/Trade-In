@@ -113,7 +113,7 @@ export default function Perfil() {
                         </SelectContent>
                       </Select>
 
-                      <div className="w-1/2 flex flex-col justify-center">
+                      <div className="w-1/2 flex flex-col justify-center relative ">
                         <b className="flex justify-center text-sm">
                           Data inicial
                         </b>
@@ -133,7 +133,7 @@ export default function Perfil() {
 
                         {/* Calendário que aparece ao clicar no input */}
                         {isCalendarOpenStart && (
-                          <div className="absolute mt-2 z-50 bg-white border rounded-md shadow-lg">
+                          <div className="absolute top-full left-0 mt-1 z-50 bg-white border rounded-md shadow-lg">
                             <Calendar
                               mode="single"
                               selected={dateStart}
@@ -144,7 +144,7 @@ export default function Perfil() {
                         )}
                       </div>
 
-                      <div className="w-1/2 flex flex-col justify-center">
+                      <div className="w-1/2 flex flex-col justify-center relative">
                         <b className="flex justify-center text-sm">
                           Data final
                         </b>
@@ -162,7 +162,7 @@ export default function Perfil() {
 
                         {/* Calendário que aparece ao clicar no input */}
                         {isCalendarOpenEnd && (
-                          <div className="absolute mt-2 z-50 bg-white border rounded-md shadow-lg">
+                          <div className="absolute top-full left-0 mt-1 z-50 bg-white border rounded-md shadow-lg">
                             <Calendar
                               mode="single"
                               selected={dateEnd}

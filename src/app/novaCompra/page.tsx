@@ -3,7 +3,7 @@ import { Navbar } from "@/components/navbar/navbar";
 
 export default function NovaCompra() {
   return (
-    <section>
+    <section className="py-16">
         <Navbar />
 
         <Footer />

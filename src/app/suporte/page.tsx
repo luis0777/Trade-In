@@ -46,7 +46,7 @@ export default function Page() {
               <Button className="bg-blue-700 w-full"  onClick={() => {
                     toast({
                       title: "Sucesso!",
-                      description: "A mensagem foi enviada com sucesso!",
+                      description: "Aguarde o contato do suporte para resolver seu problema!",
                       duration: 2000,
                     });
                   }}>Alterar senha</Button>
