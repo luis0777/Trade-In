@@ -196,10 +196,10 @@ export default function Lojas() {
             </PaginationContent>
           </Pagination>
           <Link
-            href="/cadastrarColaboradores"
+            href="/cadastrarLoja"
             className="justify-end flex  rounded-md "
           >
-            <Button className="bg-blue-700">
+            <Button className="bg-transparent text-blue-700 font-bold hover:bg-slate-50">
               <Plus />
               Adicionar loja
             </Button>

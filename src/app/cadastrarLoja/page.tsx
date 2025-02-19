@@ -34,7 +34,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/hooks/use-toast";
 
-export default function EditarLoja() {
+export default function CadastrarLoja() {
   const [accordionOpenDadosLoja, setAccordionOpenDadosLoja] = useState<
     string | undefined
   >("item-1");
@@ -45,8 +45,8 @@ export default function EditarLoja() {
 
   const handleSave = () => {
     toast({
-      title: "Alterações salvas com sucesso!",
-      description: "As informações foram atualizadas.",
+      title: "Sucesso!",
+      description: "Loja cadastradas com sucesso.",
       className: "bg-green-50 text-green-500",
       duration: 2000,
     });
@@ -80,12 +80,12 @@ export default function EditarLoja() {
       <div>
         <div className="w-full flex items-center">
           <div className="w-[115rem] justify-end">
-            <b className="flex justify-center text-3xl pt-5">Editar Loja</b>
+            <b className="flex justify-center text-3xl pt-5">Cadastrar Loja</b>
           </div>
           <div className="w-[5rem] flex justify-end ">
             <Link href="/lojas">
               <Button className="bg-transparent text-blue-700 font-bold hover:bg-slate-50">
-                Voltar
+                Lojas cadastradas
               </Button>
             </Link>
           </div>
@@ -344,14 +344,12 @@ export default function EditarLoja() {
           </Accordion>
 
           <div className="w-full flex justify-center p-5">
-            <Link href="/lojas">
-              <Button
-                className="bg-transparent text-blue-700 font-bold hover:bg-slate-50"
-                onClick={handleSave}
-              >
-                Salvar Alterações
-              </Button>
-            </Link>
+            <Button
+              className="bg-transparent text-blue-700 font-bold hover:bg-slate-50"
+              onClick={handleSave}
+            >
+              Finalizar cadastro
+            </Button>
           </div>
         </div>
       </div>
