@@ -220,7 +220,7 @@ export function SidebarComponent() {
 
                   <SheetTitle>
                     <Link
-                      href="/novaCompra"
+                      href="/motivosCancelamentos"
                       className="flex justify-start items-center p-4 pl-0 hover:bg-gray-200 hover:rounded-2xl"
                     >
                       <TriangleAlert className="mr-2 text-black" />

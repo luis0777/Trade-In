@@ -107,7 +107,6 @@ export default function CadastrarColaboradores() {
                     toast({
                       title: "Sucesso!!!",
                       description: "Cadastro realizado com sucesso",
-                      className: "bg-green-50 text-green-500",
                     });
                   }}
                 >

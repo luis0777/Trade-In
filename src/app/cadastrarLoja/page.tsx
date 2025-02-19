@@ -47,7 +47,6 @@ export default function CadastrarLoja() {
     toast({
       title: "Sucesso!",
       description: "Loja cadastradas com sucesso.",
-      className: "bg-green-50 text-green-500",
       duration: 2000,
     });
 

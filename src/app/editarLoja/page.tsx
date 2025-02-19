@@ -47,7 +47,6 @@ export default function EditarLoja() {
     toast({
       title: "Alterações salvas com sucesso!",
       description: "As informações foram atualizadas.",
-      className: "bg-green-50 text-green-500",
       duration: 2000,
     });
 
