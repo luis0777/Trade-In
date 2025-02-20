@@ -5,7 +5,6 @@ import { Navbar } from "@/components/navbar/navbar";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -26,17 +25,13 @@ import { Input } from "@/components/ui/input";
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
   AlertDialogFooter,
-  AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Toast } from "@radix-ui/react-toast";
-import { Toaster } from "@/components/ui/toaster";
+
 import {
   Dialog,
   DialogContent,
@@ -46,19 +41,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
 import { Label } from "@/components/ui/label";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const loja = [
@@ -153,12 +136,13 @@ const loja = [
 ];
 
 export default function ItemCompra() {
+  const [open, setOpen] = useState(false);
   const { toast } = useToast();
   const handleSave = () => {
+    setOpen(false);
     toast({
       title: "Sucesso!",
       description: "Aparelho enviado para perdidos!",
-      className: "bg-green-50 text-green-500",
       duration: 2000,
     });
   };
@@ -175,7 +159,6 @@ export default function ItemCompra() {
 
   return (
     <section className="py-16 w-full h-full">
-      <Toaster />
       <Navbar />
       <div className="w-full flex flex-col justify-center items-center">
         <div className="w-full text-center text-3xl font-bold mt-4 ">
@@ -187,7 +170,7 @@ export default function ItemCompra() {
             placeholder="Digite o produto para procurar..."
             className="w-12rem"
           />
-          <Button variant="default" className="bg-blue-500 hover:bg-blue-600">
+          <Button variant="default" className="bg-blue-500 ">
             Buscar
           </Button>
         </div>
@@ -199,48 +182,48 @@ export default function ItemCompra() {
               operador logístico.
             </h6>
           </div>
-          <div className=" mt-3">
+          <div className="">
             <Table>
               <TableHeader>
                 <TableRow className="bg-gray-100 ">
-                  <TableHead className="mt-2 font-bold text-black">
-                    <div className="flex items-center">
+                  <TableHead className="font-bold text-black">
+                    <div className="flex justify-center">
                       ID
                       <ArrowDownUp className="h-4 ml-2" />
                     </div>
                   </TableHead>
                   <TableHead className="font-bold text-black">
-                    <div className="flex items-center">
+                    <div className="flex justify-center">
                       IMEI
                       <ArrowDownUp className="h-4 ml-2" />
                     </div>
                   </TableHead>
                   <TableHead className="font-bold text-black">
-                    <div className="flex items-center">
+                    <div className="flex justify-center">
                       DATA
                       <ArrowDownUp className="h-4 ml-2" />
                     </div>
                   </TableHead>
                   <TableHead className="text-left font-bold text-black">
-                    <div className="flex items-center">
+                    <div className="flex justify-center">
                       CLIENTE
                       <ArrowDownUp className="h-4 ml-2" />
                     </div>
                   </TableHead>
                   <TableHead className="text-left font-bold text-black">
-                    <div className="flex items-center">
+                    <div className="flex justify-center">
                       PRODUTO
                       <ArrowDownUp className="h-4 ml-2" />
                     </div>
                   </TableHead>
                   <TableHead className="text-left font-bold text-black">
-                    <div className="flex items-center">
+                    <div className="flex justify-center">
                       CAMPANHA
                       <ArrowDownUp className="h-4 ml-2" />
                     </div>
                   </TableHead>
-                  <TableHead className="text-left font-bold text-black">
-                    <div className="flex items-center ">
+                  <TableHead className="text-left font-bold text-black w-1/5">
+                    <div className="flex justify-center ">
                       IMEI/NÚMERO DE SÉRIE DA NOVA COMPRA
                       <ArrowDownUp className="h-4 ml-2" />
                     </div>
@@ -251,14 +234,19 @@ export default function ItemCompra() {
               <TableBody>
                 {currentRowsLoja.map((row, index) => (
                   <TableRow key={index}>
-                    <TableCell className="">{row.ID}</TableCell>
-
-                    <TableCell className=" ">{row.IMEI}</TableCell>
-                    <TableCell className=" ">{row.DATA}</TableCell>
-                    <TableCell className=" ">{row.CLIENTE}</TableCell>
-                    <TableCell className=" ">{row.PRODUTO}</TableCell>
-                    <TableCell className=" ">{row.CAMPANHA}</TableCell>
-                    <TableCell className="flex justify-center gap-2 ">
+                    <TableCell className="text-center">{row.ID}</TableCell>
+                    <TableCell className="text-center ">{row.IMEI}</TableCell>
+                    <TableCell className="text-center ">{row.DATA}</TableCell>
+                    <TableCell className="text-center ">
+                      {row.CLIENTE}
+                    </TableCell>
+                    <TableCell className="text-center ">
+                      {row.PRODUTO}
+                    </TableCell>
+                    <TableCell className="text-center ">
+                      {row.CAMPANHA}
+                    </TableCell>
+                    <TableCell className="flex justify-center  gap-2 ">
                       <div>
                         <AlertDialog>
                           <AlertDialogTrigger>
@@ -299,7 +287,7 @@ export default function ItemCompra() {
                       </div>
 
                       <div>
-                        <Dialog>
+                        <Dialog open={open} onOpenChange={setOpen}>
                           <DialogTrigger asChild>
                             <Button variant="outline">
                               <Plus />
@@ -308,7 +296,7 @@ export default function ItemCompra() {
                           <DialogContent className="">
                             <DialogHeader>
                               <DialogTitle className="p-2">
-                                Adicionar Imei / número de série
+                                Adicionar IMEI / Número de série
                               </DialogTitle>
 
                               <div className="mt-4">
@@ -360,15 +348,15 @@ export default function ItemCompra() {
                                 </RadioGroup>
                               </div>
                             </DialogHeader>
-                            <div className="grid gap-4 py-4 justify-center">
-                              <div className="grid grid-cols-4 items-center gap-4">
+                            <div className="space-y-3 gap-4 py-4 justify-center">
+                              <div className=" grid-cols-4 items-center gap-4">
                                 <Input
                                   id="codigo"
                                   placeholder="Código Imei"
                                   className="col-span-3"
                                 />
                               </div>
-                              <div className="grid grid-cols-4 items-center gap-4">
+                              <div className=" grid-cols-4 items-center gap-4">
                                 <Input
                                   id="username"
                                   placeholder="Descrição"
@@ -376,11 +364,12 @@ export default function ItemCompra() {
                                 />
                               </div>
                             </div>
-                            <DialogFooter>
-                              <div className=" ">
+                            <DialogFooter className=" px-36">
+                              <div className="flex justify-center">
                                 <Button
                                   type="submit"
-                                  className="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600 cursor-pointer mt-4"
+                                  className="bg-blue-500 text-white px-6 py-3 rounded  cursor-pointer "
+                                  onClick={handleSave}
                                 >
                                   Vincular novo item
                                 </Button>
@@ -396,7 +385,7 @@ export default function ItemCompra() {
             </Table>
 
             {/* Paginação */}
-            <Pagination className="mt-6">
+            <Pagination className="">
               <PaginationContent>
                 <PaginationItem>
                   <PaginationPrevious
