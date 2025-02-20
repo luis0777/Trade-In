@@ -296,15 +296,15 @@ export default function AparelhoPerdido() {
   const paginateLoja = (pageNumber) => setCurrentPageLoja(pageNumber);
 
   return (
-    <section className="py-16">
+    <section className="py-16 ">
       <Toaster/>
       <Navbar />
-      <div className=" p-4 mt-6 ">
+      <div className="pt-5">
         <div className="flex justify-center items-center">
           <p className="text-3xl font-bold">Aparelho perdido</p>
         </div>
 
-        <div className="p-6 mt-4 h-screen ">
+        <div className="p-6   ">
           <div  className="flex w-full ">
             <div  className="flex w-1/3 justify-center item-center ">
               <div className="flex items-center relative gap-2 ">
