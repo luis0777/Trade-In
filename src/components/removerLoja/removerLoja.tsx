@@ -23,7 +23,6 @@ export function RemoverLoja() {
     toast({
       title: "Sucesso!",
       description: "Loja removida com sucesso!",
-      className: "bg-green-50 text-green-500",
       duration: 2500,
     });
   };
