@@ -113,7 +113,7 @@ export function SidebarComponent() {
 
               <SheetTitle>
                 <Link
-                  href="/novaCompra"
+                  href="/expedicao"
                   className="flex justify-start items-center p-4 pl-0 hover:bg-gray-200 hover:rounded-2xl"
                 >
                   <Truck className="mr-2 text-black" />
