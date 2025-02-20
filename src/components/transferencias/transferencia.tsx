@@ -1,4 +1,3 @@
-
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -7,6 +6,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useState } from "react";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 import {
   Table,
@@ -17,7 +25,29 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+const colaborador = [
+  {
+    voucher: "",
+    dataAbertura: "",
+    IMEI: "",
+    codigoLoja: "",
+    nomeLoja: "",
+    dispositivo: "",
+  },
+];
+
 export function Transferencia() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [colaboradores, setColaboradores] = useState(colaborador);
+  const rowsPerPage = 10;
+
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+
+  const currentRows = colaboradores.slice(indexOfFirstRow, indexOfLastRow);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
   return (
     <section className="py-16 w-full ">
       <div className="flex w-full">
@@ -55,6 +85,45 @@ export function Transferencia() {
             </TableRow>
           </TableHeader>
         </Table>
+
+        {/* Paginação */}
+        <Pagination className="mt-6">
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                onClick={() =>
+                  paginate(currentPage > 1 ? currentPage - 1 : currentPage)
+                }
+                className="cursor-pointer"
+              />
+            </PaginationItem>
+            {[...Array(Math.ceil(colaborador.length / rowsPerPage)).keys()].map(
+              (number) => (
+                <PaginationItem key={number + 1}>
+                  <PaginationLink
+                    onClick={() => paginate(number + 1)}
+                    isActive={currentPage === number + 1}
+                    className="cursor-pointer"
+                  >
+                    {number + 1}
+                  </PaginationLink>
+                </PaginationItem>
+              )
+            )}
+            <PaginationItem>
+              <PaginationNext
+                onClick={() =>
+                  paginate(
+                    currentPage < Math.ceil(colaborador.length / rowsPerPage)
+                      ? currentPage + 1
+                      : currentPage
+                  )
+                }
+                className="cursor-pointer"
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </div>
       <div className=" font-semibold text-2xl text-center">
         Nenhum registro encontrado...
