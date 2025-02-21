@@ -21,7 +21,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { ArrowDownUp, ClockAlert } from "lucide-react";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Calendar } from "@/components/ui/calendar";
@@ -39,8 +39,6 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { Toast } from "@radix-ui/react-toast";
 import { Toaster } from "@/components/ui/toaster";
-
-
 
 const loja = [
   {
@@ -255,32 +253,32 @@ const loja = [
 ];
 
 export default function AparelhoPerdido() {
-  const { toast } = useToast()
+  const { toast } = useToast();
   const handleSave = () => {
     toast({
       title: "Sucesso!",
       description: "Aparelho enviado para perdidos!",
       className: "bg-green-50 text-green-500",
       duration: 2000,
-    })};
-  
+    });
+  };
 
   //Data Inicial
 
-  const [dateStart, setDateStart] = useState(undefined);
+  const [dateStart, setDateStart] = useState<Date | undefined>(undefined);
   const [isCalendarOpenStart, setIsCalendarOpenStart] = useState(false);
 
-  const handleDateSelectStart = (selectedDate) => {
+  const handleDateSelectStart = (selectedDate: Date | undefined) => {
     setDateStart(selectedDate);
     setIsCalendarOpenStart(false);
   };
 
   //Data Final
 
-  const [dateEnd, setDateEnd] = useState(undefined);
+  const [dateEnd, setDateEnd] = useState<Date | undefined>(undefined);
   const [isCalendarOpenEnd, setIsCalendarOpenEnd] = useState(false);
 
-  const handleDateSelectEnd = (selectedDate) => {
+  const handleDateSelectEnd = (selectedDate: Date | undefined) => {
     setDateEnd(selectedDate);
     setIsCalendarOpenEnd(false);
   };
@@ -293,11 +291,12 @@ export default function AparelhoPerdido() {
     currentPageLoja * rowsPerPage
   );
 
-  const paginateLoja = (pageNumber) => setCurrentPageLoja(pageNumber);
+  const paginateLoja = (pageNumber: SetStateAction<number>) =>
+    setCurrentPageLoja(pageNumber);
 
   return (
     <section className="py-16 ">
-      <Toaster/>
+      <Toaster />
       <Navbar />
       <div className="pt-5">
         <div className="flex justify-center items-center">
@@ -305,8 +304,8 @@ export default function AparelhoPerdido() {
         </div>
 
         <div className="p-6   ">
-          <div  className="flex w-full ">
-            <div  className="flex w-1/3 justify-center item-center ">
+          <div className="flex w-full ">
+            <div className="flex w-1/3 justify-center item-center ">
               <div className="flex items-center relative gap-2 ">
                 <b className="text-sm flex ">INICIO</b>
                 <Input
@@ -329,10 +328,7 @@ export default function AparelhoPerdido() {
                 )}
               </div>
             </div>
-            <div
-              
-              className="flex w-1/3 justify-center item-center  "
-            >
+            <div className="flex w-1/3 justify-center item-center  ">
               <div className="flex items-center relative gap-2">
                 <b className="text-sm">FIM</b>
                 <Input
@@ -355,10 +351,7 @@ export default function AparelhoPerdido() {
                 )}
               </div>
             </div>
-            <div
-            
-              className="flex w-1/3 justify-center item-center gap-2 "
-            >
+            <div className="flex w-1/3 justify-center item-center gap-2 ">
               <Input
                 type="email"
                 placeholder="Digite o produto para procurar..."
@@ -451,25 +444,25 @@ export default function AparelhoPerdido() {
                     <TableCell className=" ">{row.STATUSATUAL}</TableCell>
                     <TableCell className=" ">{row.VALORCONSUMIDOR}</TableCell>
                     <TableCell className=" ">
-                    <div ></div>
-                      <AlertDialog >
+                      <div></div>
+                      <AlertDialog>
                         <AlertDialogTrigger>
                           <div className="bg-blue-500 p-2 rounded">
                             <ClockAlert className="text-white" />
                           </div>
                         </AlertDialogTrigger>
                         <AlertDialogContent>
-
                           <AlertDialogHeader>
-                            
                             <AlertDialogTitle className="text-center">
                               Enviar para aparelhos perdidos?
-                            </AlertDialogTitle> 
+                            </AlertDialogTitle>
                           </AlertDialogHeader>
                           <AlertDialogFooter>
                             <AlertDialogCancel>Fechar</AlertDialogCancel>
-                            
-                            <AlertDialogAction onClick={handleSave}>Enviar</AlertDialogAction>
+
+                            <AlertDialogAction onClick={handleSave}>
+                              Enviar
+                            </AlertDialogAction>
                           </AlertDialogFooter>
                         </AlertDialogContent>
                       </AlertDialog>

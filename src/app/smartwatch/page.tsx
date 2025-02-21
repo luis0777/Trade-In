@@ -69,17 +69,17 @@ export default function Smartwatch() {
     <section className="py-20">
       <Navbar />
 
-      
-      
       <div className="w-full flex  h-[5rem] justify-center items-center">
-      <div className=" w-11/12 flex justify-center text-3xl pl-36 ">
-        <b>Seção Smartwatch</b>
-      </div>
-      <div className=" w-1/12  flex justify-center text-3xl  ">
-      <Link href="/novaCompra">
-        <Button className="bg-transparent text-blue-700 shadow-md font-bold hover:bg-slate-50">Home</Button>
-      </Link>
-      </div>
+        <div className=" w-11/12 flex justify-center text-3xl pl-36 ">
+          <b>Seção Smartwatch</b>
+        </div>
+        <div className=" w-1/12  flex justify-center text-3xl  ">
+          <Link href="/novaCompra">
+            <Button className="bg-transparent text-blue-700 shadow-md font-bold hover:bg-slate-50">
+              Home
+            </Button>
+          </Link>
+        </div>
       </div>
 
       {showForm ? (
