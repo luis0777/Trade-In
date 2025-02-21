@@ -1,7 +1,7 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {EditarColaborador} from "@/components/editarColaborador/editarColaborador";
+import { SelecionarCondicaoSmartwatch } from "../selecionarCondicaoSmartwatch/selecionarCondicaoSmartwatch";
 
 interface TradeInDetailsProps {
     showTradeInDetails: boolean;
@@ -11,7 +11,7 @@ interface TradeInDetailsProps {
 
 const TradeInDetailsNovaCompra: React.FC<TradeInDetailsProps> = ({ showTradeInDetails, setShowForm, setShowTradeInDetails }) => {
     return showTradeInDetails ? (
-        <EditarColaborador />
+        <SelecionarCondicaoSmartwatch />
     ) : (
         <div className="w-full h-[40rem] flex items-center justify-center ">
         <Card className=" flex-col justify-center">

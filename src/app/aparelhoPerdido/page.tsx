@@ -1,12 +1,10 @@
 "use client";
 
 import { Footer } from "@/components/footer/footer";
-
 import { Navbar } from "@/components/navbar/navbar";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -37,7 +35,6 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Toast } from "@radix-ui/react-toast";
 import { Toaster } from "@/components/ui/toaster";
 
 
@@ -267,33 +264,36 @@ export default function AparelhoPerdido() {
 
   //Data Inicial
 
-  const [dateStart, setDateStart] = useState(undefined);
-  const [isCalendarOpenStart, setIsCalendarOpenStart] = useState(false);
+  const [dateStart, setDateStart] = useState<Date | undefined>(undefined);
+const [isCalendarOpenStart, setIsCalendarOpenStart] = useState(false);
 
-  const handleDateSelectStart = (selectedDate) => {
+const handleDateSelectStart = (selectedDate: Date | undefined) => {
+  if (selectedDate) {
     setDateStart(selectedDate);
     setIsCalendarOpenStart(false);
-  };
+  }
+};
 
-  //Data Final
+// Data Final
+const [dateEnd, setDateEnd] = useState<Date | undefined>(undefined);
+const [isCalendarOpenEnd, setIsCalendarOpenEnd] = useState(false);
 
-  const [dateEnd, setDateEnd] = useState(undefined);
-  const [isCalendarOpenEnd, setIsCalendarOpenEnd] = useState(false);
-
-  const handleDateSelectEnd = (selectedDate) => {
+const handleDateSelectEnd = (selectedDate: Date | undefined) => {
+  if (selectedDate) {
     setDateEnd(selectedDate);
     setIsCalendarOpenEnd(false);
-  };
+  }
+};
 
-  const [currentPageLoja, setCurrentPageLoja] = useState(1);
-  const rowsPerPage = 10;
+const [currentPageLoja, setCurrentPageLoja] = useState(1);
+const rowsPerPage = 10;
 
-  const currentRowsLoja = loja.slice(
-    (currentPageLoja - 1) * rowsPerPage,
-    currentPageLoja * rowsPerPage
-  );
+const currentRowsLoja = loja.slice(
+  (currentPageLoja - 1) * rowsPerPage,
+  currentPageLoja * rowsPerPage
+);
 
-  const paginateLoja = (pageNumber) => setCurrentPageLoja(pageNumber);
+const paginateLoja = (pageNumber: number) => setCurrentPageLoja(pageNumber);
 
   return (
     <section className="py-16 ">
