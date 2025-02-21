@@ -155,7 +155,7 @@ export default function ItemCompra() {
     currentPageLoja * rowsPerPage
   );
 
-  const paginateLoja = (pageNumber) => setCurrentPageLoja(pageNumber);
+  const paginateLoja = (pageNumber: number) => setCurrentPageLoja(pageNumber);
 
   return (
     <section className="py-16 w-full h-full">
