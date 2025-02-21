@@ -24,6 +24,14 @@ export default function Smartwatch() {
   const [showForm, setShowForm] = useState(true);
 
   const [showTradeInDetails, setShowTradeInDetails] = useState(false);
+  const [choices, setChoices] = useState("");
+
+  const resetChoices = () => {
+    setFabricante("");
+    setModelo("");
+    setCor("");
+    setTamanho("");
+  };
 
   const handleFabricanteChange = (value: string) => {
     setFabricante(value);
@@ -60,6 +68,7 @@ export default function Smartwatch() {
           showTradeInDetails={showTradeInDetails}
           setShowForm={setShowForm}
           setShowTradeInDetails={setShowTradeInDetails}
+          resetChoices={resetChoices}
         />
       );
     }

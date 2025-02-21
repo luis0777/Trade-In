@@ -1,12 +1,10 @@
 "use client";
 
 import { Footer } from "@/components/footer/footer";
-
 import { Navbar } from "@/components/navbar/navbar";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -37,7 +35,6 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Toast } from "@radix-ui/react-toast";
 import { Toaster } from "@/components/ui/toaster";
 
 const loja = [
@@ -271,9 +268,12 @@ export default function AparelhoPerdido() {
   const handleDateSelectStart = (selectedDate: Date | undefined) => {
     setDateStart(selectedDate);
     setIsCalendarOpenStart(false);
-  };
+  }
+};
 
-  //Data Final
+// Data Final
+const [dateEnd, setDateEnd] = useState<Date | undefined>(undefined);
+const [isCalendarOpenEnd, setIsCalendarOpenEnd] = useState(false);
 
   const [dateEnd, setDateEnd] = useState<Date | undefined>(undefined);
   const [isCalendarOpenEnd, setIsCalendarOpenEnd] = useState(false);
@@ -281,15 +281,16 @@ export default function AparelhoPerdido() {
   const handleDateSelectEnd = (selectedDate: Date | undefined) => {
     setDateEnd(selectedDate);
     setIsCalendarOpenEnd(false);
-  };
+  }
+};
 
-  const [currentPageLoja, setCurrentPageLoja] = useState(1);
-  const rowsPerPage = 10;
+const [currentPageLoja, setCurrentPageLoja] = useState(1);
+const rowsPerPage = 10;
 
-  const currentRowsLoja = loja.slice(
-    (currentPageLoja - 1) * rowsPerPage,
-    currentPageLoja * rowsPerPage
-  );
+const currentRowsLoja = loja.slice(
+  (currentPageLoja - 1) * rowsPerPage,
+  currentPageLoja * rowsPerPage
+);
 
   const paginateLoja = (pageNumber: SetStateAction<number>) =>
     setCurrentPageLoja(pageNumber);
