@@ -24,9 +24,9 @@ const TradeInDetailsNovaCompra: React.FC<TradeInDetailsProps> = ({
 }) => {
     const handleReset = () => {
         if (resetChoices) {
-            resetChoices(); // Reseta as escolhas se a função existir
+            resetChoices(); 
         }
-        setShowForm(true); // Volta para o formulário anterior
+        setShowForm(true); 
     };
 
     return showTradeInDetails ? (
