@@ -19,7 +19,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { ArrowDownUp, ClockAlert } from "lucide-react";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Calendar } from "@/components/ui/calendar";
@@ -36,6 +36,8 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
+
+
 
 const loja = [
   {
@@ -250,22 +252,23 @@ const loja = [
 ];
 
 export default function AparelhoPerdido() {
-  const { toast } = useToast();
+  const { toast } = useToast()
   const handleSave = () => {
     toast({
       title: "Sucesso!",
       description: "Aparelho enviado para perdidos!",
       className: "bg-green-50 text-green-500",
       duration: 2000,
-    });
-  };
+    })};
+  
 
   //Data Inicial
 
   const [dateStart, setDateStart] = useState<Date | undefined>(undefined);
-  const [isCalendarOpenStart, setIsCalendarOpenStart] = useState(false);
+const [isCalendarOpenStart, setIsCalendarOpenStart] = useState(false);
 
-  const handleDateSelectStart = (selectedDate: Date | undefined) => {
+const handleDateSelectStart = (selectedDate: Date | undefined) => {
+  if (selectedDate) {
     setDateStart(selectedDate);
     setIsCalendarOpenStart(false);
   }
@@ -275,10 +278,8 @@ export default function AparelhoPerdido() {
 const [dateEnd, setDateEnd] = useState<Date | undefined>(undefined);
 const [isCalendarOpenEnd, setIsCalendarOpenEnd] = useState(false);
 
-  const [dateEnd, setDateEnd] = useState<Date | undefined>(undefined);
-  const [isCalendarOpenEnd, setIsCalendarOpenEnd] = useState(false);
-
-  const handleDateSelectEnd = (selectedDate: Date | undefined) => {
+const handleDateSelectEnd = (selectedDate: Date | undefined) => {
+  if (selectedDate) {
     setDateEnd(selectedDate);
     setIsCalendarOpenEnd(false);
   }
@@ -292,12 +293,11 @@ const currentRowsLoja = loja.slice(
   currentPageLoja * rowsPerPage
 );
 
-  const paginateLoja = (pageNumber: SetStateAction<number>) =>
-    setCurrentPageLoja(pageNumber);
+const paginateLoja = (pageNumber: number) => setCurrentPageLoja(pageNumber);
 
   return (
     <section className="py-16 ">
-      <Toaster />
+      <Toaster/>
       <Navbar />
       <div className="pt-5">
         <div className="flex justify-center items-center">
@@ -305,8 +305,8 @@ const currentRowsLoja = loja.slice(
         </div>
 
         <div className="p-6   ">
-          <div className="flex w-full ">
-            <div className="flex w-1/3 justify-center item-center ">
+          <div  className="flex w-full ">
+            <div  className="flex w-1/3 justify-center item-center ">
               <div className="flex items-center relative gap-2 ">
                 <b className="text-sm flex ">INICIO</b>
                 <Input
@@ -329,7 +329,10 @@ const currentRowsLoja = loja.slice(
                 )}
               </div>
             </div>
-            <div className="flex w-1/3 justify-center item-center  ">
+            <div
+              
+              className="flex w-1/3 justify-center item-center  "
+            >
               <div className="flex items-center relative gap-2">
                 <b className="text-sm">FIM</b>
                 <Input
@@ -352,7 +355,10 @@ const currentRowsLoja = loja.slice(
                 )}
               </div>
             </div>
-            <div className="flex w-1/3 justify-center item-center gap-2 ">
+            <div
+            
+              className="flex w-1/3 justify-center item-center gap-2 "
+            >
               <Input
                 type="email"
                 placeholder="Digite o produto para procurar..."
@@ -445,25 +451,25 @@ const currentRowsLoja = loja.slice(
                     <TableCell className=" ">{row.STATUSATUAL}</TableCell>
                     <TableCell className=" ">{row.VALORCONSUMIDOR}</TableCell>
                     <TableCell className=" ">
-                      <div></div>
-                      <AlertDialog>
+                    <div ></div>
+                      <AlertDialog >
                         <AlertDialogTrigger>
                           <div className="bg-blue-500 p-2 rounded">
                             <ClockAlert className="text-white" />
                           </div>
                         </AlertDialogTrigger>
                         <AlertDialogContent>
+
                           <AlertDialogHeader>
+                            
                             <AlertDialogTitle className="text-center">
                               Enviar para aparelhos perdidos?
-                            </AlertDialogTitle>
+                            </AlertDialogTitle> 
                           </AlertDialogHeader>
                           <AlertDialogFooter>
                             <AlertDialogCancel>Fechar</AlertDialogCancel>
-
-                            <AlertDialogAction onClick={handleSave}>
-                              Enviar
-                            </AlertDialogAction>
+                            
+                            <AlertDialogAction onClick={handleSave}>Enviar</AlertDialogAction>
                           </AlertDialogFooter>
                         </AlertDialogContent>
                       </AlertDialog>
