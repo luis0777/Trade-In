@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 
-export function NotFoundNovaCompra() {
+export function NotFoundItem() {
   return (
     <div className="w-full h-[40rem] flex items-center justify-center ">
     <Card className="flex justify-center ">

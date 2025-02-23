@@ -12,19 +12,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { NotFoundNovaCompra } from "@/components/notFoundNovaCompra/notFoundNovaCompra";
-import TradeInDetailsNovaCompra from "@/components/tradeInDetailsNovaCompra/tradeInDetailsNovaCompra";
+import { NotFoundItem } from "@/components/notFoundItem/notFoundItem";
+import ProductEvaluation from "@/components/productEvaluation/productEvaluation";
 import Link from "next/link";
+import { SelecionarCondicaoSmartwatch } from "@/components/selecionarCondicaoSmartwatch/selecionarCondicaoSmartwatch";
 
 export default function Smartwatch() {
   const [fabricante, setFabricante] = useState("");
   const [modelo, setModelo] = useState("");
   const [cor, setCor] = useState("");
   const [tamanho, setTamanho] = useState("");
+  const smartwatchValue = 1400.0;
   const [showForm, setShowForm] = useState(true);
-
   const [showTradeInDetails, setShowTradeInDetails] = useState(false);
-  const [choices, setChoices] = useState("");
 
   const resetChoices = () => {
     setFabricante("");
@@ -59,16 +59,19 @@ export default function Smartwatch() {
     if (!tamanho) return null;
 
     if (tamanho === "40mm" || tamanho === "44mm") {
-      return <NotFoundNovaCompra />;
+      return <NotFoundItem />;
     }
 
     if (tamanho === "41mm" || tamanho === "45mm") {
       return (
-        <TradeInDetailsNovaCompra
-          showTradeInDetails={showTradeInDetails}
+        <ProductEvaluation
+          productValue={smartwatchValue}
+          showproductEvaluation={showTradeInDetails}
           setShowForm={setShowForm}
-          setShowTradeInDetails={setShowTradeInDetails}
+          setShowproductEvaluation={setShowTradeInDetails}
           resetChoices={resetChoices}
+          onContinueTo={<SelecionarCondicaoSmartwatch />}
+          onResetTo={<Smartwatch />}
         />
       );
     }

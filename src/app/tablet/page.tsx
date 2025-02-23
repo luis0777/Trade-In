@@ -12,33 +12,36 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { NotFoundNovaCompra } from "@/components/notFoundNovaCompra/notFoundNovaCompra";
-
-import TradeInDetailsAvaliacaoItem from "@/components/avaliacaoItem/avaliacaoItem";
+import { NotFoundItem } from "@/components/notFoundItem/notFoundItem";
+import ProductEvaluation from "@/components/productEvaluation/productEvaluation";
+import { SelecionarCondicaoSmartwatch } from "@/components/selecionarCondicaoSmartwatch/selecionarCondicaoSmartwatch";
 
 export default function Tablet() {
-  // Estados para armazenar as seleções
   const [selectedFabricante, setSelectedFabricante] = useState("");
   const [selectedModelo, setSelectedModelo] = useState("");
   const [selectedCapacidade, setSelectedCapacidade] = useState("");
   const [cor, setCor] = useState("");
+  const tabletValue = 700.0;
   const [showForm, setShowForm] = useState(true);
-  const [showAvaliacao, setShowAvaliacao] = useState(false);
+  const [showTradeInDetails, setShowTradeInDetails] = useState(false);
 
-  // Dados dos fabricantes
+  const resetChoices = () => {
+    setSelectedFabricante("");
+    setSelectedModelo("");
+    setCor("");
+    setSelectedCapacidade("");
+  };
+
   const fabricantes = [{ value: "samsung", label: "Samsung" }];
 
-  // Modelos para cada fabricante
   const modelos = {
     samsung: ["GALAXY NOTE 10 PLUS"],
   };
 
-  // Capacidades para cada modelo
   const capacidades = {
     "GALAXY NOTE 10 PLUS": ["128GB", "256GB", "512GB"],
   };
 
-  // Cores para cada capacidade
   const cores = {
     "128GB": ["Amarelo"],
     "256GB": ["azul", "Branco", "Preto"],
@@ -53,13 +56,17 @@ export default function Tablet() {
     if (!cor) return null;
 
     if (cor === "Amarelo") {
-      return <NotFoundNovaCompra />;
+      return <NotFoundItem />;
     } else {
       return (
-        <TradeInDetailsAvaliacaoItem
-          showAvaliacao={showAvaliacao}
+        <ProductEvaluation
+          productValue={tabletValue}
+          showproductEvaluation={showTradeInDetails}
           setShowForm={setShowForm}
-          setShowAvaliacao={setShowAvaliacao}
+          setShowproductEvaluation={setShowTradeInDetails}
+          resetChoices={resetChoices}
+          onContinueTo={<SelecionarCondicaoSmartwatch />}
+          onResetTo={<Tablet />}
         />
       );
     }
@@ -85,7 +92,7 @@ export default function Tablet() {
         <div className="w-full h-[40rem] flex items-center justify-center">
           <Card className="w-[350px]">
             <CardHeader>
-              <CardTitle>Identifique seu Notebook</CardTitle>
+              <CardTitle>Identifique seu tablet</CardTitle>
             </CardHeader>
             <CardContent>
               <form>
@@ -118,7 +125,7 @@ export default function Tablet() {
 
                   {/* Select Modelo */}
                   {selectedFabricante && (
-                    <div className="mt-2">
+                    <div>
                       <Select
                         onValueChange={(value) => {
                           setSelectedModelo(value);
@@ -144,7 +151,7 @@ export default function Tablet() {
 
                   {/* Select Capacidade */}
                   {selectedModelo && (
-                    <div className="mt-2">
+                    <div>
                       <Select
                         onValueChange={(value) => {
                           setSelectedCapacidade(value);
@@ -167,9 +174,8 @@ export default function Tablet() {
                     </div>
                   )}
 
-                  {/* Select Cor */}
                   {selectedCapacidade && (
-                    <div className="mt-2">
+                    <div>
                       <Select onValueChange={handleCorChange}>
                         <SelectTrigger id="cor">
                           <SelectValue placeholder="Selecione a cor" />

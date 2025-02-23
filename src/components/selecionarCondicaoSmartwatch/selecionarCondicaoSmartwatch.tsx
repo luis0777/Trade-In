@@ -46,8 +46,6 @@ export function SelecionarCondicaoSmartwatch() {
     setShowResult(true);
   };
 
-  
-
   return (
     <>
       {!showResult ? (
@@ -86,8 +84,8 @@ export function SelecionarCondicaoSmartwatch() {
                 <p>- Considere a resposta afirmativa sempre que:</p>
                 <p>
                   - O dispositivo permanece ligado por mais de 30 segundos
-                  certifique-se de que tenha pelo menos 5% de bateria ao realizar
-                  esta verificação.
+                  certifique-se de que tenha pelo menos 5% de bateria ao
+                  realizar esta verificação.
                 </p>
                 <p>- Um telefonema poderia ter sido feito</p>
                 <div className="flex justify-between">
@@ -117,14 +115,17 @@ export function SelecionarCondicaoSmartwatch() {
                   arranhões profundos (perceptíveis ao toque).
                 </p>
                 <p>
-                  - A caixa ou o vidro traseiro estão quebrados, tortos, rachados,
-                  destacados ou apresentam riscos profundos (perceptíveis ao toque).
+                  - A caixa ou o vidro traseiro estão quebrados, tortos,
+                  rachados, destacados ou apresentam riscos profundos
+                  (perceptíveis ao toque).
                 </p>
                 <p>
-                  - A lente da camera é rota, estrelada ou apresenta raios profundos
-                  (perceptíveis ao tato).
+                  - A lente da camera é rota, estrelada ou apresenta raios
+                  profundos (perceptíveis ao tato).
                 </p>
-                <p>- Os botões estão danificados ou não funcionam corretamente</p>
+                <p>
+                  - Os botões estão danificados ou não funcionam corretamente
+                </p>
                 <p>
                   - O equipamento conta com modificações na superfície como
                   incrustações, pinturas, agarrados etc.
@@ -156,14 +157,17 @@ export function SelecionarCondicaoSmartwatch() {
                   arranhões profundos (perceptíveis ao toque).
                 </p>
                 <p>
-                  - A caixa ou o vidro traseiro estão quebrados, tortos, rachados,
-                  destacados ou apresentam riscos profundos (perceptíveis ao toque).
+                  - A caixa ou o vidro traseiro estão quebrados, tortos,
+                  rachados, destacados ou apresentam riscos profundos
+                  (perceptíveis ao toque).
                 </p>
                 <p>
                   - A lente da câmera está quebrada, estilhaçada ou possui raios
                   profundos (você pode perceber isso).
                 </p>
-                <p>- Os botões estão danificados ou não funcionam corretamente</p>
+                <p>
+                  - Os botões estão danificados ou não funcionam corretamente
+                </p>
                 <p>
                   - O equipamento possui modificações superficiais como
                   incrustações, pinturas, grips, etc.
@@ -189,8 +193,8 @@ export function SelecionarCondicaoSmartwatch() {
             <TabsContent value="4">
               <div>
                 <b>
-                  O tecido do dispositivo está em boas condições? (Não há danos ou
-                  falhas)?
+                  O tecido do dispositivo está em boas condições? (Não há danos
+                  ou falhas)?
                 </b>
                 <p>- Considere uma resposta negativa desde que:</p>
                 <p>
@@ -219,14 +223,16 @@ export function SelecionarCondicaoSmartwatch() {
             <TabsContent value="5">
               <div>
                 <b>
-                  O dispositivo está em bom estado? (Não há evidência de ingestão de
-                  líquidos)?
+                  O dispositivo está em bom estado? (Não há evidência de
+                  ingestão de líquidos)?
                 </b>
                 <p>- Considere resposta negativa sempre que:</p>
-                <p>- Você pode visualizar líquido ou umidade através da tela.</p>
                 <p>
-                  - Há evidências de danos por umidade nas portas, câmeras, ranhuras
-                  SIM ou NÃO.
+                  - Você pode visualizar líquido ou umidade através da tela.
+                </p>
+                <p>
+                  - Há evidências de danos por umidade nas portas, câmeras,
+                  ranhuras SIM ou NÃO.
                 </p>
                 <p>
                   - O indicador de contato por líquidos esta ativo (rojo ou
@@ -256,8 +262,8 @@ export function SelecionarCondicaoSmartwatch() {
                 <p>- O dispositivo foi desbloqueado?</p>
                 <p>- Considere a resposta afirmativa sempre que:</p>
                 <p>
-                  - A função Find My Iphone / Find My Device / Samsung ID / Google
-                  ID está desativada
+                  - A função Find My Iphone / Find My Device / Samsung ID /
+                  Google ID está desativada
                 </p>
 
                 <div className="flex justify-between">
