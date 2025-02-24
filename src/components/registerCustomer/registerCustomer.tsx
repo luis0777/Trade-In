@@ -18,11 +18,9 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-
 import * as React from "react";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -33,9 +31,22 @@ import {
 } from "@/components/ui/popover";
 import { ChevronRight, ChevronLeft, RotateCw } from "lucide-react";
 
-export function RegisterCustomer() {
-  const [date, setDate] = React.useState<Date>();
+interface RegisterCustomerProps {
+  setShowPreviousComponent: (value: boolean) => void;
+  previousComponent: string;
   
+}
+
+export function RegisterCustomer({
+  setShowPreviousComponent,
+  previousComponent,
+}: RegisterCustomerProps) {
+  const [date, setDate] = React.useState<Date>();
+
+  const handleNewPerson = () => {
+    setShowPreviousComponent(false);
+  };
+
   return (
     <div className="w-full flex items-center justify-center">
       <Card className="w-[60%]">
@@ -156,7 +167,7 @@ export function RegisterCustomer() {
                     </div>
                     <div className="w-3/4 px-2">
                       <Label htmlFor="telefone">Telefone</Label>
-                      <Input type="telefone" id="email" placeholder="" />
+                      <Input type="telefone" id="telefone" placeholder="" />
                     </div>
                   </div>
                 </div>
@@ -253,7 +264,10 @@ export function RegisterCustomer() {
         </CardContent>
         <CardFooter className="w-full flex ">
           <div className="w-[15%]">
-            <Button className="bg-blue-700 text-white">
+            <Button
+              className="bg-blue-700 text-white"
+              onClick={handleNewPerson}
+            >
               <RotateCw /> Nova pessoa
             </Button>
           </div>

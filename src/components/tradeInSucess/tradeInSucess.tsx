@@ -23,6 +23,10 @@ import {
 import { useState } from "react";
 import { VerificarCPFCliente } from "../verificarCPFCliente/verificarCPFCliente";
 
+interface TradeInSuccessProps {
+  productValeu: number;
+}
+
 export function TradeInSuccess() {
   const [currentComponent, setCurrentComponent] = useState('TradeInSuccess');
 
