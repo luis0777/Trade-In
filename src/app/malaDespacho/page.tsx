@@ -5,7 +5,6 @@ import { Navbar } from "@/components/navbar/navbar";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -14,15 +13,15 @@ import {
 import {
   Pagination,
   PaginationContent,
-  PaginationItem, 
+  PaginationItem,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { ArrowDownUp} from "lucide-react";
+import { ArrowDownUp } from "lucide-react";
 import { useState } from "react";
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const loja = [
   {
@@ -238,6 +237,7 @@ const loja = [
 
 export default function MalaDespacho() {
   const [currentPageLoja, setCurrentPageLoja] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const rowsPerPage = 10;
 
@@ -246,10 +246,7 @@ export default function MalaDespacho() {
     currentPageLoja * rowsPerPage
   );
 
-
   const paginateLoja = (pageNumber: number) => setCurrentPageLoja(pageNumber);
-
-
 
   return (
     <section className="py-16">
@@ -261,88 +258,100 @@ export default function MalaDespacho() {
 
         <div className="p-6 mt-4 h-screen">
           <div className="flex">
-          <Input type="email" placeholder="Digite o produto para procurar..." />
-          <Button variant="default" className="bg-blue-500 hover:bg-blue-600">Buscar</Button>
-
+            <Input
+              type="pruduto"
+              placeholder="Digite o produto para procurar..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <Button
+              variant="default"
+              className="bg-blue-500 hover:bg-blue-600"
+              disabled={!searchTerm.trim()}
+              
+            >
+              Buscar
+            </Button>
           </div>
-          <div className="mt-6"><Table>
-            <TableHeader>
-              <TableRow className="bg-gray-100 ">
-                <TableHead className="mt-2 font-bold text-black">
-                  <div className="flex items-center">
-                    ID
-                    <ArrowDownUp className="h-4 ml-2" />
-                  </div>
-                </TableHead>
-                <TableHead className="font-bold text-black">
-                  <div className="flex items-center">
-                    IMEI
-                    <ArrowDownUp className="h-4 ml-2" />
-                  </div>
-                </TableHead>
-                <TableHead className="font-bold text-black">
-                  <div className="flex items-center">
-                    DATA
-                    <ArrowDownUp className="h-4 ml-2" />
-                  </div>
-                </TableHead>
-                <TableHead className="text-left font-bold text-black">
-                  <div className="flex items-center">
-                    CLIENTE
-                    <ArrowDownUp className="h-4 ml-2" />
-                  </div>
-                </TableHead>
-                <TableHead className="text-left font-bold text-black">
-                  <div className="flex items-center">
-                    VENDEDOR
-                    <ArrowDownUp className="h-4 ml-2" />
-                  </div>
-                </TableHead>
-                <TableHead className="text-left font-bold text-black">
-                  <div className="flex items-center">
-                    PRODUTO
-                    <ArrowDownUp className="h-4 ml-2" />
-                  </div>
-                </TableHead>
-                <TableHead className="text-left font-bold text-black">
-                  <div className="flex items-center">
-                    STATUS
-                    <ArrowDownUp className="h-4 ml-2" />
-                  </div>
-                </TableHead>
-                <TableHead className="text-left font-bold text-black">
-                  <div className="flex items-center">
-                    STATUS ATUAL
-                    <ArrowDownUp className="h-4 ml-2" />
-                  </div>
-                </TableHead>
-                <TableHead className="text-left font-bold text-black">
-                  <div className="flex items-center">
-                    VALOR CONSUMIDOR
-                    <ArrowDownUp className="h-4 ml-2" />
-                  </div>
-                </TableHead>
-              </TableRow>
-            </TableHeader>
-
-            <TableBody>
-              {currentRowsLoja.map((row, index) => (
-                <TableRow key={index}>
-                  <TableCell className="">{row.ID}</TableCell>
-
-                  <TableCell className=" ">{row.IMEI}</TableCell>
-                  <TableCell className=" ">{row.DATA}</TableCell>
-                  <TableCell className=" ">{row.CLIENTE}</TableCell>
-                  <TableCell className=" ">{row.VENDEDOR}</TableCell>
-                  <TableCell className=" ">{row.PRODUTO}</TableCell>
-                  <TableCell className=" ">{row.STATUS}</TableCell>
-                  <TableCell className=" ">{row.STATUSATUAL}</TableCell>
-                  <TableCell className=" ">{row.VALORCONSUMIDOR}</TableCell>
+          <div className="mt-6">
+            <Table>
+              <TableHeader>
+                <TableRow className="bg-gray-100 ">
+                  <TableHead className="mt-2 font-bold text-black">
+                    <div className="flex items-center">
+                      ID
+                      <ArrowDownUp className="h-4 ml-2" />
+                    </div>
+                  </TableHead>
+                  <TableHead className="font-bold text-black">
+                    <div className="flex items-center">
+                      IMEI
+                      <ArrowDownUp className="h-4 ml-2" />
+                    </div>
+                  </TableHead>
+                  <TableHead className="font-bold text-black">
+                    <div className="flex items-center">
+                      DATA
+                      <ArrowDownUp className="h-4 ml-2" />
+                    </div>
+                  </TableHead>
+                  <TableHead className="text-left font-bold text-black">
+                    <div className="flex items-center">
+                      CLIENTE
+                      <ArrowDownUp className="h-4 ml-2" />
+                    </div>
+                  </TableHead>
+                  <TableHead className="text-left font-bold text-black">
+                    <div className="flex items-center">
+                      VENDEDOR
+                      <ArrowDownUp className="h-4 ml-2" />
+                    </div>
+                  </TableHead>
+                  <TableHead className="text-left font-bold text-black">
+                    <div className="flex items-center">
+                      PRODUTO
+                      <ArrowDownUp className="h-4 ml-2" />
+                    </div>
+                  </TableHead>
+                  <TableHead className="text-left font-bold text-black">
+                    <div className="flex items-center">
+                      STATUS
+                      <ArrowDownUp className="h-4 ml-2" />
+                    </div>
+                  </TableHead>
+                  <TableHead className="text-left font-bold text-black">
+                    <div className="flex items-center">
+                      STATUS ATUAL
+                      <ArrowDownUp className="h-4 ml-2" />
+                    </div>
+                  </TableHead>
+                  <TableHead className="text-left font-bold text-black">
+                    <div className="flex items-center">
+                      VALOR CONSUMIDOR
+                      <ArrowDownUp className="h-4 ml-2" />
+                    </div>
+                  </TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table></div>
-          
+              </TableHeader>
+
+              <TableBody>
+                {currentRowsLoja.map((row, index) => (
+                  <TableRow key={index}>
+                    <TableCell className="">{row.ID}</TableCell>
+
+                    <TableCell className=" ">{row.IMEI}</TableCell>
+                    <TableCell className=" ">{row.DATA}</TableCell>
+                    <TableCell className=" ">{row.CLIENTE}</TableCell>
+                    <TableCell className=" ">{row.VENDEDOR}</TableCell>
+                    <TableCell className=" ">{row.PRODUTO}</TableCell>
+                    <TableCell className=" ">{row.STATUS}</TableCell>
+                    <TableCell className=" ">{row.STATUSATUAL}</TableCell>
+                    <TableCell className=" ">{row.VALORCONSUMIDOR}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
 
           {/* Paginação */}
           <Pagination className="mt-6">
