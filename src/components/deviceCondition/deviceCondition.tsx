@@ -6,8 +6,9 @@ import { Navbar } from "@/components/navbar/navbar";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowBigRight, ArrowBigLeft } from "lucide-react";
 import { useState } from "react";
-import { TradeInSuccess } from "../tradeInSucess/tradeInSucess";
 import Link from "next/link";
+import { TradeInSuccess } from "../tradeInSucess/tradeInSucess";
+
 
 export function DeviceCondition() {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
