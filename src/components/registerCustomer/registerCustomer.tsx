@@ -34,12 +34,13 @@ import { ChevronRight, ChevronLeft, RotateCw } from "lucide-react";
 interface RegisterCustomerProps {
   setShowPreviousComponent: (value: boolean) => void;
   previousComponent: string;
-  
+  onContinueTo: React.ReactNode; // 
 }
 
 export function RegisterCustomer({
   setShowPreviousComponent,
   previousComponent,
+  onContinueTo,
 }: RegisterCustomerProps) {
   const [date, setDate] = React.useState<Date>();
 
@@ -47,12 +48,17 @@ export function RegisterCustomer({
     setShowPreviousComponent(false);
   };
 
-  const handleNext = () => {
-    // Exibe o próximo componente
-    setShowPreviousComponent(false); // Supondo que o estado esteja controlando a visibilidade do componente anterior
-  };
+  const [showNextComponent, setShowNextComponent] = React.useState(false);
 
-  return (
+const handleNext = () => {
+  setShowNextComponent(true);
+};
+
+ 
+
+return showNextComponent ? (
+  <>{onContinueTo}</>
+) : (
     <div className="w-full flex items-center justify-center">
       <Card className="w-[60%]">
         <CardContent>
@@ -282,7 +288,7 @@ export function RegisterCustomer({
             </Button>
           </div>
           <div className="w-[70%] flex justify-end ">
-            <Button className="bg-blue-700 text-white" onClick={handleNext}>
+            <Button className="bg-blue-700 text-white"  onClick={handleNext}>
               <ChevronRight /> Proximo
             </Button>
           </div>
