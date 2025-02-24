@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar/navbar";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowBigRight, ArrowBigLeft } from "lucide-react";
 import { useState } from "react";
+import { TradeInSuccess } from "../tradeInSucess/tradeInSucess";
 
 export function DeviceCondition() {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
@@ -116,7 +117,7 @@ export function DeviceCondition() {
         >
           <ArrowBigLeft /> VOLTAR
         </Button>
-        <Button
+        <Button 
           className="w-32 bg-blue-700 hover:bg-slate-400 shadow-md transition-all
          duration-300 hover:scale-105 hover:shadow-xl cursor-pointer "
         >
