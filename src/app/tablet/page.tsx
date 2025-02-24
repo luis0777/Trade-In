@@ -14,7 +14,8 @@ import {
 } from "@/components/ui/select";
 import { NotFoundItem } from "@/components/notFoundItem/notFoundItem";
 import ProductEvaluation from "@/components/productEvaluation/productEvaluation";
-import { SelecionarCondicaoSmartwatch } from "@/components/selecionarCondicaoSmartwatch/selecionarCondicaoSmartwatch";
+
+import { DeviceCondition } from "@/components/deviceCondition/deviceCondition";
 
 export default function Tablet() {
   const [selectedFabricante, setSelectedFabricante] = useState("");
@@ -65,7 +66,7 @@ export default function Tablet() {
           setShowForm={setShowForm}
           setShowproductEvaluation={setShowTradeInDetails}
           resetChoices={resetChoices}
-          onContinueTo={<SelecionarCondicaoSmartwatch />}
+          onContinueTo={<DeviceCondition />}
           onResetTo={<Tablet />}
         />
       );
