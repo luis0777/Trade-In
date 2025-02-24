@@ -47,6 +47,11 @@ export function RegisterCustomer({
     setShowPreviousComponent(false);
   };
 
+  const handleNext = () => {
+    // Exibe o próximo componente
+    setShowPreviousComponent(false); // Supondo que o estado esteja controlando a visibilidade do componente anterior
+  };
+
   return (
     <div className="w-full flex items-center justify-center">
       <Card className="w-[60%]">
@@ -277,7 +282,7 @@ export function RegisterCustomer({
             </Button>
           </div>
           <div className="w-[70%] flex justify-end ">
-            <Button className="bg-blue-700 text-white">
+            <Button className="bg-blue-700 text-white" onClick={handleNext}>
               <ChevronRight /> Proximo
             </Button>
           </div>

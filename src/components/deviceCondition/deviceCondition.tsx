@@ -1,8 +1,6 @@
 "use client";
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Footer } from "@/components/footer/footer";
-import { Navbar } from "@/components/navbar/navbar";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowBigRight, ArrowBigLeft } from "lucide-react";
 import { useState } from "react";
@@ -24,7 +22,6 @@ export function DeviceCondition() {
         <TradeInSuccess />
       ) : (
         <section className="py-16">
-          <Navbar />
           <div className="flex justify-center w-full gap-8">
             <div className="flex-col items-center">
               <Card
@@ -131,7 +128,6 @@ export function DeviceCondition() {
               PRÓXIMO <ArrowBigRight />
             </Button>
           </div>
-          <Footer />
         </section>
       )}
     </>
