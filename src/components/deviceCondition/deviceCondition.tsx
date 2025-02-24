@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar/navbar";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowBigRight, ArrowBigLeft } from "lucide-react";
 import { useState } from "react";
+import Link from "next/link";
 import { TradeInSuccess } from "../tradeInSucess/tradeInSucess";
 
 export function DeviceCondition() {
@@ -115,21 +116,22 @@ export function DeviceCondition() {
             </div>
           </div>
 
-      <div className="flex justify-between p-10  ">
-        <Button
-          className="w-32 bg-blue-700 hover:bg-slate-400 shadow-md transition-all
-         duration-300 hover:scale-105 hover:shadow-xl cursor-pointer "
-        >
-          <ArrowBigLeft /> VOLTAR
-        </Button>
-        <Button 
-          className="w-32 bg-blue-700 hover:bg-slate-400 shadow-md transition-all
-         duration-300 hover:scale-105 hover:shadow-xl cursor-pointer "
-        >
-          PRÓXIMO <ArrowBigRight />
-        </Button>
-      </div>
-      <Footer />
-    </section>
+          <div className="flex justify-between p-10">
+            <Link href="/novaCompra">
+              <Button className="w-32 bg-blue-700 hover:bg-slate-400 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                <ArrowBigLeft /> VOLTAR
+              </Button>
+            </Link>
+            <Button
+              onClick={() => setShowProductEvaluation(true)}
+              className="w-32 bg-blue-700 hover:bg-slate-400 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
+            >
+              PRÓXIMO <ArrowBigRight />
+            </Button>
+          </div>
+          <Footer />
+        </section>
+      )}
+    </>
   );
 }
