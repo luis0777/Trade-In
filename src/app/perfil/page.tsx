@@ -22,7 +22,6 @@ import {
 } from "@/components/ui/select";
 import { Calendar } from "@/components/ui/calendar";
 import { useToast } from "@/hooks/use-toast";
-import { Toaster } from "@/components/ui/toaster";
 
 export default function Perfil() {
   const { toast } = useToast();
@@ -43,9 +42,14 @@ export default function Perfil() {
     setIsCalendarOpenEnd(false);
   };
 
+  const [selectedReport, setSelectedReport] = useState<string>("");
+
+  const isFormValid = () => {
+    return selectedReport && dateStart && dateEnd;
+  };
+
   return (
     <section className="py-52">
-        <Toaster />
       <Navbar />
 
       <div className="w-full flex justify-center flex-col mt-5 ">
@@ -96,7 +100,9 @@ export default function Perfil() {
                   <div className="grid w-full items-center gap-4">
                     <div className="flex flex-col space-y-1.5"></div>
                     <div className="flex flex-col space-y-1.5 justify-center items-center">
-                      <Select>
+                      <Select
+                        onValueChange={(value) => setSelectedReport(value)}
+                      >
                         <SelectTrigger id="framework" className="w-1/2 ">
                           <SelectValue placeholder="Selecione o tipo de relatório" />
                         </SelectTrigger>
@@ -178,7 +184,8 @@ export default function Perfil() {
               </CardContent>
               <CardFooter className="flex justify-end">
                 <Button
-                  className="bg-blue-700"
+                  className="bg-blue-700 "
+                  disabled={!isFormValid()}
                   onClick={() => {
                     toast({
                       title: "Erro!",
