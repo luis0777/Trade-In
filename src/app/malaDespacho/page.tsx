@@ -22,6 +22,7 @@ import { ArrowDownUp } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { FormField } from "@/components/formField/formField";
 
 const loja = [
   {
@@ -238,6 +239,7 @@ const loja = [
 export default function MalaDespacho() {
   const [currentPageLoja, setCurrentPageLoja] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showErrors, setShowErrors] = useState(false);
 
   const rowsPerPage = 10;
 
@@ -245,6 +247,13 @@ export default function MalaDespacho() {
     (currentPageLoja - 1) * rowsPerPage,
     currentPageLoja * rowsPerPage
   );
+
+  const handleSubmit = () => {
+    if (!searchTerm.trim()) {
+      setShowErrors(true);
+      return;
+    }
+  };
 
   const paginateLoja = (pageNumber: number) => setCurrentPageLoja(pageNumber);
 
@@ -258,17 +267,26 @@ export default function MalaDespacho() {
 
         <div className="p-6 mt-4 h-screen">
           <div className="flex">
-            <Input
-              type="pruduto"
-              placeholder="Digite o produto para procurar..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+            <div className="flex flex-col gap-1 w-full">
+              <Input
+                type="text"
+                placeholder="Digite o produto para procurar..."
+                value={searchTerm}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  setShowErrors(false);
+                }}
+                className={showErrors ? "border-red-500" : ""}
+              />
+              {showErrors && (
+                <p className="text-red-500 text-sm">Campo obrigatório!</p>
+              )}
+            </div>
+
             <Button
               variant="default"
               className="bg-blue-500 hover:bg-blue-600"
-              disabled={!searchTerm.trim()}
-              
+              onClick={handleSubmit}
             >
               Buscar
             </Button>

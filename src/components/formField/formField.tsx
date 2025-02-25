@@ -1,52 +1,75 @@
+import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { Textarea } from "@/components/ui/textarea";
 
 interface FormFieldProps {
-  id: string;
-  type: string;
-  placeholder: string;
+  label?: string;
+  placeholder?: string;
   value: string;
-  onChange: (value: string) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
   required?: boolean;
-  minLength?: number;
+  type?: "text" | "textarea" | "select";
+  options?: { value: string; label: string }[];
+  showError?: boolean; 
+  rows?: number;
 }
 
 export const FormField = ({
-  id,
-  type,
+  label,
   placeholder,
   value,
   onChange,
-  required = true,
-  minLength,
+  required = false,
+  type = "text",
+  options = [],
+  showError = false,
+  rows,
 }: FormFieldProps) => {
-  const [touched, setTouched] = useState(false);
+  const [error, setError] = useState(false);
 
-  const showError = touched && required && value.trim() === "";
-  const showLengthError = touched && minLength && value.length < minLength;
+  useEffect(() => {
+    if (required && showError && !value.trim()) {
+      setError(true);
+    } else {
+      setError(false);
+    }
+  }, [showError, value, required]);
 
   return (
-    <div className="flex flex-col space-y-1">
-      <Input
-        id={id}
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={(e) => {
-          onChange(e.target.value);
-          setTouched(true);
-        }}
-        onBlur={() => setTouched(true)}
-        className={showError || showLengthError ? "border-red-500" : ""}
-      />
-      {showError && (
-        <span className="text-red-500 text-sm">Este campo é obrigatório</span>
+    <div className="flex flex-col space-y-1.5">
+      {label && <label className="font-semibold">{label}</label>}
+
+      {type === "textarea" ? (
+        <Textarea
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          rows={rows}
+          className={error ? "border-red-500" : ""}
+        />
+      ) : type === "select" ? (
+        <select
+          value={value}
+          onChange={onChange}
+          className={`border rounded-md p-2 ${error ? "border-red-500" : ""}`}
+        >
+          <option value="">Selecione uma opção</option>
+          {options.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <Input
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          className={error ? "border-red-500" : ""}
+        />
       )}
-      {showLengthError && (
-        <span className="text-red-500 text-sm">
-          Mínimo de {minLength} caracteres
-        </span>
-      )}
+
+      {error && <span className="text-red-500 text-sm">Campo obrigatório</span>}
     </div>
   );
 };

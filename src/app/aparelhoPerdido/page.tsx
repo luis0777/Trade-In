@@ -37,8 +37,6 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
 
-
-
 const loja = [
   {
     ID: "1966",
@@ -252,52 +250,62 @@ const loja = [
 ];
 
 export default function AparelhoPerdido() {
-  const { toast } = useToast()
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showErrors, setShowErrors] = useState(false);
+
+  const handleSubmit = () => {
+    if (!searchTerm.trim()) {
+      setShowErrors(true);
+      return;
+    }
+  };
+
+  const { toast } = useToast();
   const handleSave = () => {
     toast({
       title: "Sucesso!",
       description: "Aparelho enviado para perdidos!",
       className: "bg-green-50 text-green-500",
       duration: 2000,
-    })};
-  
+    });
+  };
+
 
   //Data Inicial
-
   const [dateStart, setDateStart] = useState<Date | undefined>(undefined);
-const [isCalendarOpenStart, setIsCalendarOpenStart] = useState(false);
+  const [isCalendarOpenStart, setIsCalendarOpenStart] = useState(false);
 
-const handleDateSelectStart = (selectedDate: Date | undefined) => {
-  if (selectedDate) {
-    setDateStart(selectedDate);
-    setIsCalendarOpenStart(false);
-  }
-};
+  const handleDateSelectStart = (selectedDate: Date | undefined) => {
+    if (selectedDate) {
+      setDateStart(selectedDate);
+      setIsCalendarOpenStart(false);
+    }
+  };
 
-// Data Final
-const [dateEnd, setDateEnd] = useState<Date | undefined>(undefined);
-const [isCalendarOpenEnd, setIsCalendarOpenEnd] = useState(false);
+  // Data Final
+  const [dateEnd, setDateEnd] = useState<Date | undefined>(undefined);
+  const [isCalendarOpenEnd, setIsCalendarOpenEnd] = useState(false);
 
-const handleDateSelectEnd = (selectedDate: Date | undefined) => {
-  if (selectedDate) {
-    setDateEnd(selectedDate);
-    setIsCalendarOpenEnd(false);
-  }
-};
+  const handleDateSelectEnd = (selectedDate: Date | undefined) => {
+    if (selectedDate) {
+      setDateEnd(selectedDate);
+      setIsCalendarOpenEnd(false);
+    }
+  };
 
-const [currentPageLoja, setCurrentPageLoja] = useState(1);
-const rowsPerPage = 10;
+  const [currentPageLoja, setCurrentPageLoja] = useState(1);
+  const rowsPerPage = 10;
 
-const currentRowsLoja = loja.slice(
-  (currentPageLoja - 1) * rowsPerPage,
-  currentPageLoja * rowsPerPage
-);
+  const currentRowsLoja = loja.slice(
+    (currentPageLoja - 1) * rowsPerPage,
+    currentPageLoja * rowsPerPage
+  );
 
-const paginateLoja = (pageNumber: number) => setCurrentPageLoja(pageNumber);
+  const paginateLoja = (pageNumber: number) => setCurrentPageLoja(pageNumber);
 
   return (
     <section className="py-16 ">
-      <Toaster/>
+      <Toaster />
       <Navbar />
       <div className="pt-5">
         <div className="flex justify-center items-center">
@@ -305,8 +313,8 @@ const paginateLoja = (pageNumber: number) => setCurrentPageLoja(pageNumber);
         </div>
 
         <div className="p-6   ">
-          <div  className="flex w-full ">
-            <div  className="flex w-1/3 justify-center item-center ">
+          <div className="flex w-full ">
+            <div className="flex w-1/3 justify-center item-center ">
               <div className="flex items-center relative gap-2 ">
                 <b className="text-sm flex ">INICIO</b>
                 <Input
@@ -329,10 +337,7 @@ const paginateLoja = (pageNumber: number) => setCurrentPageLoja(pageNumber);
                 )}
               </div>
             </div>
-            <div
-              
-              className="flex w-1/3 justify-center item-center  "
-            >
+            <div className="flex w-1/3 justify-center item-center  ">
               <div className="flex items-center relative gap-2">
                 <b className="text-sm">FIM</b>
                 <Input
@@ -355,17 +360,25 @@ const paginateLoja = (pageNumber: number) => setCurrentPageLoja(pageNumber);
                 )}
               </div>
             </div>
-            <div
-            
-              className="flex w-1/3 justify-center item-center gap-2 "
-            >
+            <div className="flex w-1/3 justify-center item-center gap-2 ">
+            <div className="flex flex-col gap-1 w-full">
               <Input
-                type="email"
+                type="text"
                 placeholder="Digite o produto para procurar..."
-                className="w-12rem"
+                value={searchTerm}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  setShowErrors(false);
+                }}
+                className={showErrors ? "border-red-500" : ""}
               />
+              {showErrors && (
+                <p className="text-red-500 text-sm">Campo obrigatório!</p>
+              )}
+            </div>
               <Button
                 variant="default"
+                onClick={handleSubmit}
                 className="bg-blue-500 hover:bg-blue-600"
               >
                 Buscar
@@ -451,25 +464,25 @@ const paginateLoja = (pageNumber: number) => setCurrentPageLoja(pageNumber);
                     <TableCell className=" ">{row.STATUSATUAL}</TableCell>
                     <TableCell className=" ">{row.VALORCONSUMIDOR}</TableCell>
                     <TableCell className=" ">
-                    <div ></div>
-                      <AlertDialog >
+                      <div></div>
+                      <AlertDialog>
                         <AlertDialogTrigger>
                           <div className="bg-blue-500 p-2 rounded">
                             <ClockAlert className="text-white" />
                           </div>
                         </AlertDialogTrigger>
                         <AlertDialogContent>
-
                           <AlertDialogHeader>
-                            
                             <AlertDialogTitle className="text-center">
                               Enviar para aparelhos perdidos?
-                            </AlertDialogTitle> 
+                            </AlertDialogTitle>
                           </AlertDialogHeader>
                           <AlertDialogFooter>
                             <AlertDialogCancel>Fechar</AlertDialogCancel>
-                            
-                            <AlertDialogAction onClick={handleSave}>Enviar</AlertDialogAction>
+
+                            <AlertDialogAction onClick={handleSave}>
+                              Enviar
+                            </AlertDialogAction>
                           </AlertDialogFooter>
                         </AlertDialogContent>
                       </AlertDialog>
