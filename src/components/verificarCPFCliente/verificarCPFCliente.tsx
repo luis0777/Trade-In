@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { RegisterCustomer } from "../registerCustomer/registerCustomer";
 import { SeadingPhotos } from "../seadingPhotos/seadingPhotos";
 import { EditarColaborador } from "../editarColaborador/editarColaborador";
+import { Confirmation } from "../confirmation/confirmation";
 
 interface VerificarCPFClienteProps {
   setShowPreviousComponent: (value: boolean) => void;
@@ -28,11 +29,19 @@ export function VerificarCPFCliente({
       <RegisterCustomer
         setShowPreviousComponent={setShowRegisterCustomer}
         previousComponent="verificarCPFCliente"
-        onContinueTo={ <SeadingPhotos
-          setShowPreviousComponent={setShowSeadingPhotos}
-          previousComponent="registerCustomer"
-          onContinueTo={<EditarColaborador />}
-        />}
+        onContinueTo={
+          <SeadingPhotos
+            setShowPreviousComponent={setShowSeadingPhotos}
+            previousComponent="registerCustomer"
+            onContinueTo={
+              <Confirmation
+                setShowPreviousComponent={setShowSeadingPhotos}
+                previousComponent="registerCustomer"
+                onContinueTo={<EditarColaborador />}
+              />
+            }
+          />
+        }
       />
     );
   }
@@ -78,14 +87,21 @@ export function VerificarCPFCliente({
         <RegisterCustomer
           setShowPreviousComponent={setShowRegisterCustomer}
           previousComponent="verificarCPFCliente"
-          onContinueTo={ <SeadingPhotos
-            setShowPreviousComponent={setShowSeadingPhotos}
-            previousComponent="registerCustomer"
-            onContinueTo={<EditarColaborador />}
-          />}
+          onContinueTo={
+            <SeadingPhotos
+              setShowPreviousComponent={setShowSeadingPhotos}
+              previousComponent="registerCustomer"
+              onContinueTo={
+                <Confirmation
+                  setShowPreviousComponent={setShowSeadingPhotos}
+                  previousComponent="registerCustomer"
+                  onContinueTo={<EditarColaborador />}
+                />
+              }
+            />
+          }
         />
       )}
-          
     </>
   );
 }

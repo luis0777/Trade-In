@@ -315,10 +315,13 @@ export function SeadingPhotos({
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel className="  shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105  hover:shadow-xl" >
-                  NÂO
+                <AlertDialogCancel className="  shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105  hover:shadow-xl">
+                  NÃO
                 </AlertDialogCancel>
-                <AlertDialogAction className=" bg-blue-600  shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105  hover:shadow-xl" onClick={handleNext}>
+                <AlertDialogAction
+                  className=" bg-blue-600  shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105  hover:shadow-xl"
+                  onClick={handleNext}
+                >
                   SIM
                 </AlertDialogAction>
               </AlertDialogFooter>
