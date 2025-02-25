@@ -2,6 +2,17 @@
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -20,7 +31,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import * as React from "react";
 import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -29,20 +40,22 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { ChevronRight, ChevronLeft, RotateCw } from "lucide-react";
+import { CalendarIcon, Check, ChevronLeft, HelpCircle } from "lucide-react";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
-interface RegisterCustomerProps {
-  
+import Link from "next/link";
+
+interface ConfirmationProps {
   setShowPreviousComponent: (value: boolean) => void;
   previousComponent: string;
   onContinueTo: React.ReactNode; //
 }
 
-export function RegisterCustomer({
+export function Confirmation({
   setShowPreviousComponent,
   previousComponent,
   onContinueTo,
-}: RegisterCustomerProps) {
+}: ConfirmationProps) {
   const [date, setDate] = React.useState<Date>();
 
   const handleNewPerson = () => {
@@ -58,7 +71,7 @@ export function RegisterCustomer({
   return showNextComponent ? (
     <>{onContinueTo}</>
   ) : (
-    <div className="w-full flex items-center justify-center">
+    <div className="w-[100%] flex items-center justify-center">
       <Card className="w-[60%]">
         <CardContent>
           <Accordion type="single" collapsible>
@@ -270,26 +283,180 @@ export function RegisterCustomer({
                 </div>
               </AccordionContent>
             </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger>
+                <b className="text-lg">Aparelho</b>
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="w-full flex justify-between">
+                  <div className="w-[50%] ">
+                    <div className="w-full flex justify-center p-16">
+                      <img src="/Aparelho.png" alt="" />
+                    </div>
+                  </div>
+
+                  <div className="w-[50%]">
+                    <div className="w-full flex justify-center mt-32">
+                      <Card className="w-full">
+                        <CardContent>
+                          <form>
+                            <h1 className="text-lg font-semibold flex justify-center p-8">
+                              Ficha do aparelho
+                            </h1>
+                            <div className="flex flex-col gap-4 text-lg">
+                              <p className="flex  gap-4">
+                                <span className="text-lg font-semibold ">
+                                  Fabricante:
+                                </span>{" "}
+                                Samsung
+                              </p>
+                              <p>
+                                <span className="text-lg font-semibold">
+                                  Modelo:
+                                </span>
+                                GALAXY NOTE 10 PLUS
+                              </p>
+                              <p className="flex ">
+                                <span className="text-lg font-semibold">
+                                  Versão:
+                                </span>
+                                SAMSUNG GALAXY NOTE 10 PLUS 256GB
+                              </p>
+                              <p className="flex ">
+                                <span className="text-lg font-semibold">
+                                  Cor:
+                                </span>
+                                PRETO
+                              </p>
+                              <p className="flex  gap-4">
+                                <span className="text-lg font-semibold">
+                                  Condição:
+                                </span>
+                                Tela Trincada
+                              </p>
+                              <p className="flex  gap-4">
+                                <span className="text-lg font-semibold">
+                                  Preço:
+                                </span>
+                                R$100,00
+                              </p>
+                            </div>
+                          </form>
+                        </CardContent>
+                        <CardFooter className="flex justify-end">
+                          <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <ChevronLeft /> Voltar para Aparelho
+                          </Button>
+                        </CardFooter>
+                      </Card>
+                    </div>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-4">
+              <AccordionTrigger>
+                <b className="text-lg">Check-List obrigatório</b>
+              </AccordionTrigger>
+              <AccordionContent>
+                <Card className="w-full">
+                  <CardContent>
+                    <form></form>
+                  </CardContent>
+                </Card>
+              </AccordionContent>
+            </AccordionItem>
+            <div>
+              <AccordionItem value="item-5">
+                <AccordionTrigger>
+                  <b className="text-lg">Selecionar o voucher</b>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <Card className="w-full ">
+                    <CardContent>
+                      <div className="flex">
+                        <form className="flex mt-6 w-[60%] ">
+                          <RadioGroup
+                            defaultValue="comfortable"
+                            className="w-[70%]"
+                          >
+                            <div className="flex justify-between ">
+                              <div className="flex items-center">
+                                <RadioGroupItem
+                                  value="voucherTrade"
+                                  id="r1"
+                                  className="mr-2"
+                                />
+                                <Label htmlFor="r1" className="text-lg">
+                                  Voucher Trade-In
+                                </Label>
+                              </div>
+                              <div className="flex items-center">
+                                <RadioGroupItem
+                                  value="voucherTradeIn"
+                                  id="r2"
+                                  className="mr-2"
+                                />
+                                <Label htmlFor="r2" className="text-lg">
+                                  Voucher Trade-In
+                                </Label>
+                              </div>
+                            </div>
+                          </RadioGroup>
+                        </form>
+                        <div className="w-[40%] mt-6 flex justify-end px-8 text-lg items-center gap-2">
+                          <span>Precisa de ajuda</span>
+                          <Link href="/suporte" passHref>
+                            <div className="relative group cursor-pointer">
+                              <HelpCircle className="w-5 h-5 text-blue-500" />
+                              <span className="absolute -top-8 left-1/2 -translate-x-1/2 hidden group-hover:block bg-gray-800 text-white text-xs rounded-lg px-2 py-1 whitespace-nowrap">
+                                Fale com nosso suporte.
+                              </span>
+                            </div>
+                          </Link>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </AccordionContent>
+              </AccordionItem>
+            </div>
           </Accordion>
         </CardContent>
-        <CardFooter className="w-full flex ">
-          <div className="w-[15%]">
-            <Button
-              className="bg-blue-700 text-white"
-              onClick={handleNewPerson}
-            >
-              <RotateCw /> Nova pessoa
-            </Button>
-          </div>
+        <CardFooter className="w-full flex justify-between ">
           <div className="w-[15%] ">
-            <Button className="bg-blue-700 text-white">
+            <Button className="w-32 bg-blue-600 font-semibold shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-xl">
               <ChevronLeft /> Voltar
             </Button>
           </div>
+
           <div className="w-[70%] flex justify-end ">
-            <Button className="bg-blue-700 text-white" onClick={handleNext}>
-              <ChevronRight /> Proximo
-            </Button>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button className="w-32 bg-blue-600 font-semibold shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                  <Check /> Finalizar
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Confirmação</AlertDialogTitle>
+                  <AlertDialogDescription className="text-lg">
+                    Você confirma todos os dados e deseja finalizar?
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel className="  shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105  hover:shadow-xl">
+                    NÃO
+                  </AlertDialogCancel>
+                  <AlertDialogAction
+                    className=" bg-blue-600  shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105  hover:shadow-xl"
+                    onClick={handleNext}
+                  >
+                    SIM
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </div>
         </CardFooter>
       </Card>
