@@ -33,6 +33,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/hooks/use-toast";
+import { FormField } from "@/components/formField/formField";
 
 export default function CadastrarLoja() {
   const [accordionOpenDadosLoja, setAccordionOpenDadosLoja] = useState<
@@ -42,17 +43,6 @@ export default function CadastrarLoja() {
     string | undefined
   >("item-1");
   const { toast } = useToast();
-
-  const handleSave = () => {
-    toast({
-      title: "Sucesso!",
-      description: "Loja cadastradas com sucesso.",
-      duration: 2000,
-    });
-
-    setAccordionOpenDadosLoja(undefined);
-    setAccordionOpenEndereco(undefined);
-  };
 
   const [addressType, setAddressType] = useState<string>("");
 
@@ -70,6 +60,69 @@ export default function CadastrarLoja() {
     if (addresses.length > 1) {
       setAddresses(addresses.filter((address) => address.id !== id));
     }
+  };
+
+  const [showErrors, setShowErrors] = useState(false);
+  const [identificador, setIdentificador] = useState("");
+  const [nivelAcesso, setNivelAcesso] = useState("");
+  const [nome, setNome] = useState("");
+  const [cnpj, setCnpj] = useState("");
+  const [infoContato, setInfoContato] = useState("");
+  const [infoColeta, setInfoColeta] = useState("");
+  const [observacao, setObservacoes] = useState("");
+  const [tipoEmail, setTipoEmail] = useState("");
+  const [email, setEmail] = useState("");
+  const [tipoTelefone, setTipoTelefone] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [tipoEndereco, setTipoEndereco] = useState("");
+  const [cep, setCep] = useState("");
+  const [estado, setEstado] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [logradouro, setLogradouro] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [numero, setNumero] = useState("");
+  const [complemento, setComplemento] = useState("");
+
+  const handleSubmit = () => {
+    if (!identificador.trim()) {
+      setShowErrors(true);
+      toast({
+        title: "Falha!",
+        description: "Preencha os campos obrigatórios.",
+        duration: 2000,
+        className: "bg-red-500 text-white",
+      });
+      return;
+    }
+
+    toast({
+      title: "Sucesso!",
+      description: "Loja cadastradas com sucesso.",
+      duration: 2000,
+    });
+    setAccordionOpenDadosLoja(undefined);
+    setAccordionOpenEndereco(undefined);
+
+    setIdentificador("");
+    setNivelAcesso("");
+    setNome("");
+    setCnpj("");
+    setInfoContato("");
+    setInfoColeta("");
+    setObservacoes("");
+    setTipoEmail("");
+    setEmail("");
+    setTipoTelefone("");
+    setTelefone("");
+    setTipoEndereco("");
+    setCep("");
+    setEstado("");
+    setCidade("");
+    setLogradouro("");
+    setBairro("");
+    setNumero("");
+    setComplemento("");
+    setShowErrors(false);
   };
 
   return (
@@ -107,111 +160,149 @@ export default function CadastrarLoja() {
                 <div className="space-y-4 px-12">
                   <div className="w-full flex ">
                     <div className="w-4/5 px-2">
-                      <Label htmlFor="identificador">
-                        Identificador Externo
-                      </Label>
-                      <Input
-                        type="identificador"
-                        id="identificador"
-                        placeholder=""
+                      <FormField
+                        label="Identificador Externo"
+                        type="text"
+                        value={identificador}
+                        onChange={(e) => setIdentificador(e.target.value)}
+                        required={true}
+                        showError={showErrors && !identificador.trim()}
                       />
                     </div>
-                    <div className="w-1/5  flex-col items-end px-2">
-                      <Select>
-                        <Label htmlFor="email">Nivel de Acesso</Label>
-                        <SelectTrigger className="w-full">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectGroup>
-                            <SelectItem value="apple">Regional</SelectItem>
-                          </SelectGroup>
-                        </SelectContent>
-                      </Select>
+
+                    <div className="w-1/5 flex-col items-end px-2">
+                      <FormField
+                        label="Nivel de Acesso"
+                        type="select"
+                        value={nivelAcesso}
+                        onChange={(e) => setNivelAcesso(e.target.value)}
+                        options={[{ value: "regional", label: "Regional" }]}
+                        required={true}
+                        showError={showErrors && !nivelAcesso}
+                      />
                     </div>
                   </div>
+
                   <div className="w-full flex-col">
                     <div className="w-full  px-2">
-                      <Label htmlFor="nome">Nome</Label>
-                      <Input type="nome" id="nome" placeholder="" />
+                      <FormField
+                        label="Nome"
+                        type="text"
+                        value={nome}
+                        onChange={(e) => setNome(e.target.value)}
+                        required={true}
+                        showError={showErrors && !nome.trim()}
+                      />
                     </div>
                   </div>
 
                   <div className="w-full flex ">
                     <div className="w-1/4 px-2">
-                      <Label htmlFor="cnpj">CNPJ</Label>
-                      <Input type="cnpj" id="cnpj" placeholder="" />
+                      <FormField
+                        label="CNPJ"
+                        type="text"
+                        placeholder="__.___.___/____-__"
+                        value={cnpj}
+                        onChange={(e) => setCnpj(e.target.value)}
+                        required={true}
+                        showError={showErrors && !cnpj.trim()}
+                      />
                     </div>
+
                     <div className="w-3/4 px-2">
-                      <Label htmlFor="infoContato">
-                        Informações do contato
-                      </Label>
-                      <Input
-                        type="infoContato"
-                        id="infoContato"
-                        placeholder=""
+                      <FormField
+                        label="Informações de Contato"
+                        type="text"
+                        value={infoContato}
+                        onChange={(e) => setInfoContato(e.target.value)}
+                        required={true}
+                        showError={showErrors && !infoContato.trim()}
                       />
                     </div>
                   </div>
 
                   <div className="w-full flex-col">
                     <div className="w-full px-2">
-                      <Label htmlFor="infoColeta">Intruções de coleta</Label>
-                      <Textarea id="infoColeta" />
+                      <FormField
+                        label="Instruções de coleta"
+                        type="textarea"
+                        value={infoColeta}
+                        onChange={(e) => setInfoColeta(e.target.value)}
+                        required={true}
+                        showError={showErrors && !infoColeta.trim()}
+                        rows={3}
+                      />
                     </div>
                   </div>
 
                   <div className="w-full flex-col">
                     <div className="w-full px-2">
-                      <Label htmlFor="Observacao">Observações</Label>
-                      <Textarea id="observacao" />
+                      <FormField
+                        label="Observação"
+                        type="textarea"
+                        value={observacao}
+                        onChange={(e) => setObservacoes(e.target.value)}
+                        required={true}
+                        showError={showErrors && !observacao.trim()}
+                        rows={3}
+                      />
                     </div>
                   </div>
 
                   <div className="w-full flex ">
                     <div className="w-1/4 px-2">
-                      <Select>
-                        <Label htmlFor="emailTipo">Tipo do email</Label>
-                        <SelectTrigger className="w-full">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectGroup>
-                            <SelectItem value="pessoal">Pessoal</SelectItem>
-                            <SelectItem value="comercial">Comercial</SelectItem>
-                            <SelectItem value="cobranca">Cobrança</SelectItem>
-                          </SelectGroup>
-                        </SelectContent>
-                      </Select>
+                      <FormField
+                        label="Tipo do email"
+                        type="select"
+                        value={tipoEmail}
+                        onChange={(e) => setTipoEmail(e.target.value)}
+                        options={[
+                          { value: "Pessoal", label: "Pessoal" },
+                          { value: "Comercial", label: "Comercial" },
+                          { value: "Cobranca", label: "Cobrança" },
+                        ]}
+                        required={true}
+                        showError={showErrors && !tipoEmail}
+                      />
                     </div>
                     <div className="w-3/4 px-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input type="email" id="email" placeholder="" />
+                      <FormField
+                        label="Email"
+                        type="text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required={true}
+                        showError={showErrors && !email.trim()}
+                      />
                     </div>
                   </div>
 
                   <div className="w-full flex ">
                     <div className="w-1/4 px-2">
-                      <Select>
-                        <Label htmlFor="telefoneTipo">Tipo do telefone</Label>
-                        <SelectTrigger className="w-full">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectGroup>
-                            <SelectItem value="pessoal">Pessoal</SelectItem>
-                            <SelectItem value="residencial">
-                              Residencial
-                            </SelectItem>
-                            <SelectItem value="comercial">Comercial</SelectItem>
-                            <SelectItem value="outro">Outro</SelectItem>
-                          </SelectGroup>
-                        </SelectContent>
-                      </Select>
+                      <FormField
+                        label="Tipo do telefone"
+                        type="select"
+                        value={tipoTelefone}
+                        onChange={(e) => setTipoTelefone(e.target.value)}
+                        options={[
+                          { value: "Pessoal", label: "Pessoal" },
+                          { value: "Comercial", label: "Comercial" },
+                          { value: "residencial", label: "Residencial" },
+                          { value: "outro", label: "Outro" },
+                        ]}
+                        required={true}
+                        showError={showErrors && !tipoTelefone}
+                      />
                     </div>
                     <div className="w-3/4 px-2">
-                      <Label htmlFor="telefone">Telefone</Label>
-                      <Input type="telefone" id="email" placeholder="" />
+                      <FormField
+                        label="Telefone"
+                        type="text"
+                        value={telefone}
+                        onChange={(e) => setTelefone(e.target.value)}
+                        required={true}
+                        showError={showErrors && !telefone.trim()}
+                      />
                     </div>
                   </div>
                 </div>
@@ -269,71 +360,105 @@ export default function CadastrarLoja() {
 
                     <div className="w-full flex ">
                       <div className="w-1/4 px-2">
-                        <Select onValueChange={handleAddressTypeChange}>
-                          <Label htmlFor="enderecoTipo">Tipo do endereço</Label>
-                          <SelectTrigger className="w-full">
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectGroup>
-                              <SelectItem value="Comercial">
-                                Comercial
-                              </SelectItem>
-                              <SelectItem value="Logistico">
-                                Logístico
-                              </SelectItem>
-                            </SelectGroup>
-                          </SelectContent>
-                        </Select>
+                        <FormField
+                          label="Tipo do endereço"
+                          type="select"
+                          value={tipoEndereco}
+                          onChange={(e) => {
+                            setTipoEndereco(e.target.value);
+                            handleAddressTypeChange(e.target.value);
+                          }}
+                          options={[
+                            { value: "Comercial", label: "Comercial" },
+                            { value: "Logistico", label: "Logístico" },
+                          ]}
+                          required={true}
+                          showError={showErrors && !tipoEndereco}
+                        />
                       </div>
                       <div className="w-1/4 px-2">
-                        <Label htmlFor="cep">CEP</Label>
-                        <Input type="cep" id="cep" placeholder="_____-___" />
+                        <FormField
+                          label="CEP"
+                          type="text"
+                          placeholder="_____-___"
+                          value={cep}
+                          onChange={(e) => setCep(e.target.value)}
+                          required={true}
+                          showError={showErrors && !cep.trim()}
+                        />
                       </div>
                       <div className="w-1/4 px-2">
-                        <Select>
-                          <Label htmlFor="estado">Estado</Label>
-                          <SelectTrigger className="w-full">
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectGroup>
-                              <SelectItem value="not">Not</SelectItem>
-                            </SelectGroup>
-                          </SelectContent>
-                        </Select>
+                        <FormField
+                          label="Estado"
+                          type="select"
+                          value={estado}
+                          onChange={(e) => {
+                            setEstado(e.target.value);
+                            handleAddressTypeChange(e.target.value);
+                          }}
+                          options={[{ value: "sp", label: "São Paulo" }]}
+                          required={true}
+                          showError={showErrors && !estado.trim()}
+                        />
                       </div>
                       <div className="w-1/4 px-2">
-                        <Select>
-                          <Label htmlFor="cidade">Cidade</Label>
-                          <SelectTrigger className="w-full">
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectGroup>
-                              <SelectItem value="not">Not</SelectItem>
-                            </SelectGroup>
-                          </SelectContent>
-                        </Select>
+                        <FormField
+                          label="Cidade"
+                          type="select"
+                          value={cidade}
+                          onChange={(e) => {
+                            setCidade(e.target.value);
+                            handleAddressTypeChange(e.target.value);
+                          }}
+                          options={[
+                            { value: "Alphaville", label: "Alphaville" },
+                          ]}
+                          required={true}
+                          showError={showErrors && !cidade.trim()}
+                        />
                       </div>
                     </div>
 
                     <div className="w-full flex ">
                       <div className="w-1/3 px-2">
-                        <Label htmlFor="logradouro">Logradouro</Label>
-                        <Input type="logradouro" id="logradouro" />
+                        <FormField
+                          label="Logradouro"
+                          type="text"
+                          value={logradouro}
+                          onChange={(e) => setLogradouro(e.target.value)}
+                          required={true}
+                          showError={showErrors && !logradouro.trim()}
+                        />
                       </div>
                       <div className="w-1/3 px-2">
-                        <Label htmlFor="bairro">Bairro</Label>
-                        <Input type="bairro" id="bairro" />
+                        <FormField
+                          label="Bairro"
+                          type="text"
+                          value={bairro}
+                          onChange={(e) => setBairro(e.target.value)}
+                          required={true}
+                          showError={showErrors && !bairro.trim()}
+                        />
                       </div>
                       <div className="w-1/6  px-2">
-                        <Label htmlFor="numero">Número</Label>
-                        <Input type="numero" id="numero" />
+                        <FormField
+                          label="Número"
+                          type="text"
+                          value={numero}
+                          onChange={(e) => setNumero(e.target.value)}
+                          required={true}
+                          showError={showErrors && !numero.trim()}
+                        />
                       </div>
                       <div className="w-1/3 px-2">
-                        <Label htmlFor="complemento">Complemento</Label>
-                        <Input type="complemento" id="complemento" />
+                        <FormField
+                          label="Complemento"
+                          type="text"
+                          value={complemento}
+                          onChange={(e) => setComplemento(e.target.value)}
+                          required={true}
+                          showError={showErrors && !complemento.trim()}
+                        />
                       </div>
                     </div>
                   </div>
@@ -345,7 +470,7 @@ export default function CadastrarLoja() {
           <div className="w-full flex justify-center p-5">
             <Button
               className="bg-transparent text-blue-700 font-bold hover:bg-slate-50"
-              onClick={handleSave}
+              onClick={handleSubmit}
             >
               Finalizar cadastro
             </Button>

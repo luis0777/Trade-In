@@ -31,7 +31,7 @@ export default function Page() {
       description: "Aguarde o contato do suporte para resolver seu problema!",
       duration: 2000,
       
-    })
+    });
     setAssunto("");
     setDescricao("");;
   };
