@@ -32,6 +32,7 @@ import {
 import { ChevronRight, ChevronLeft, RotateCw } from "lucide-react";
 
 interface RegisterCustomerProps {
+  
   setShowPreviousComponent: (value: boolean) => void;
   previousComponent: string;
   onContinueTo: React.ReactNode; //
