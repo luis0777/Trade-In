@@ -34,7 +34,7 @@ import { ChevronRight, ChevronLeft, RotateCw } from "lucide-react";
 interface RegisterCustomerProps {
   setShowPreviousComponent: (value: boolean) => void;
   previousComponent: string;
-  onContinueTo: React.ReactNode; // 
+  onContinueTo: React.ReactNode; //
 }
 
 export function RegisterCustomer({
@@ -50,22 +50,20 @@ export function RegisterCustomer({
 
   const [showNextComponent, setShowNextComponent] = React.useState(false);
 
-const handleNext = () => {
-  setShowNextComponent(true);
-};
+  const handleNext = () => {
+    setShowNextComponent(true);
+  };
 
- 
-
-return showNextComponent ? (
-  <>{onContinueTo}</>
-) : (
+  return showNextComponent ? (
+    <>{onContinueTo}</>
+  ) : (
     <div className="w-full flex items-center justify-center">
       <Card className="w-[60%]">
         <CardContent>
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
               <AccordionTrigger>
-                <b className="text-lg">Informações Pessoais</b>
+                <b className="text-lg">Informações Pessoais</b>
               </AccordionTrigger>
               <AccordionContent>
                 <div className="space-y-4 px-12">
@@ -130,7 +128,7 @@ return showNextComponent ? (
 
                   <div className="w-full flex-col">
                     <div className="w-full px-2">
-                      <Label htmlFor="Observacao">Observações</Label>
+                      <Label htmlFor="Observacao">Observações</Label>
                       <Textarea id="observacao" />
                     </div>
                   </div>
@@ -146,7 +144,7 @@ return showNextComponent ? (
                           <SelectGroup>
                             <SelectItem value="pessoal">Pessoal</SelectItem>
                             <SelectItem value="comercial">Comercial</SelectItem>
-                            <SelectItem value="cobranca">Cobrança</SelectItem>
+                            <SelectItem value="cobranca">Cobrança</SelectItem>
                           </SelectGroup>
                         </SelectContent>
                       </Select>
@@ -187,7 +185,7 @@ return showNextComponent ? (
 
             <AccordionItem value="item-2">
               <AccordionTrigger>
-                <b className="text-lg">Endereço de Entrega/Cobrança</b>
+                <b className="text-lg">Endereço de Entrega/Cobrança</b>
               </AccordionTrigger>
               <AccordionContent>
                 <div className="space-y-4 px-12">
@@ -204,7 +202,7 @@ return showNextComponent ? (
                               Residencial
                             </SelectItem>
                             <SelectItem value="comercial">Comercial</SelectItem>
-                            <SelectItem value="cobranca">Cobrança</SelectItem>
+                            <SelectItem value="cobranca">Cobrança</SelectItem>
                             <SelectItem value="outro">Outro</SelectItem>
                           </SelectGroup>
                         </SelectContent>
@@ -288,12 +286,13 @@ return showNextComponent ? (
             </Button>
           </div>
           <div className="w-[70%] flex justify-end ">
-            <Button className="bg-blue-700 text-white"  onClick={handleNext}>
+            <Button className="bg-blue-700 text-white" onClick={handleNext}>
               <ChevronRight /> Proximo
             </Button>
           </div>
         </CardFooter>
       </Card>
+         
     </div>
   );
 }

@@ -42,7 +42,7 @@ export function VerificarCPFCliente({
             <CardContent>
               <form>
                 <div className="grid w-full items-center gap-4 text-center">
-                  <Input id="cpf" placeholder="____.___.___-__" />
+                  <Input id="cpf" placeholder="..-" />
                 </div>
               </form>
             </CardContent>
@@ -53,7 +53,7 @@ export function VerificarCPFCliente({
                     className="bg-blue-700 text-white"
                     onClick={() => setShowRegisterCustomer(true)}
                   >
-                    Verificar existência no sistema
+                    Verificar existência no sistema
                   </Button>
                 </div>
               </div>
@@ -75,6 +75,7 @@ export function VerificarCPFCliente({
           onContinueTo={<SeadingPhotos />}
         />
       )}
+          
     </>
   );
 }
