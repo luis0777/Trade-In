@@ -71,7 +71,7 @@ export function Confirmation({
   return showNextComponent ? (
     <>{onContinueTo}</>
   ) : (
-    <div className="w-full flex items-center justify-center">
+    <div className="w-[100%] flex items-center justify-center">
       <Card className="w-[60%]">
         <CardContent>
           <Accordion type="single" collapsible>
