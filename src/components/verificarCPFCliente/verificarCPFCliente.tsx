@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { RegisterCustomer } from "../registerCustomer/registerCustomer";
 import { SeadingPhotos } from "../seadingPhotos/seadingPhotos";
-import { EditarColaborador } from "../editarColaborador/editarColaborador";
+import { Completion } from "../completion/completion";
 import { Confirmation } from "../confirmation/confirmation";
 
 interface VerificarCPFClienteProps {
@@ -37,7 +37,14 @@ export function VerificarCPFCliente({
               <Confirmation
                 setShowPreviousComponent={setShowSeadingPhotos}
                 previousComponent="registerCustomer"
-                onContinueTo={<EditarColaborador />}
+
+                onContinueTo={
+                  <Completion
+                    setShowPreviousComponent={setShowSeadingPhotos}
+                    previousComponent="confirmation"
+                    onContinueTo={null}
+                  />
+                }
               />
             }
           />
@@ -95,14 +102,21 @@ export function VerificarCPFCliente({
                 <Confirmation
                   setShowPreviousComponent={setShowSeadingPhotos}
                   previousComponent="registerCustomer"
-                  onContinueTo={<EditarColaborador />}
+
+                  onContinueTo={
+                    <Completion
+                      setShowPreviousComponent={setShowSeadingPhotos}
+                      previousComponent="confirmation"
+                      onContinueTo={null}
+                    />
+                  }
                 />
               }
             />
           }
         />
       )}
-
     </>
   );
+
 }
