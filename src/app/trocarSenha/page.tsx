@@ -12,25 +12,27 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useState, useEffect } from "react";
+import { FormField } from "@/components/formField/formField";
 
 export default function Page() {
   const { toast } = useToast();
   const [senhaAntiga, setSenhaAntiga] = useState("");
   const [senhaNova, setSenhaNova] = useState("");
   const [confirmeSenhaNova, setConfirmeSenhaNova] = useState("");
-  const [isFormValid, setIsFormValid] = useState(false);
 
-  useEffect(() => {
-    setIsFormValid(
-      senhaAntiga.trim() !== "" &&
-      senhaNova.trim() !== "" &&
-      confirmeSenhaNova.trim() !== ""
-    );
-  }, [senhaAntiga, senhaNova, confirmeSenhaNova]);
 
   const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!senhaAntiga || !senhaNova || !confirmeSenhaNova) {
+      toast({
+        title: "Erro",
+        description: "Preencha todos os campos obrigatórios",
+        variant: "destructive"
+      });
+      return;
+    }
+
     if (senhaNova !== confirmeSenhaNova) {
       toast({
         title: "Erro",
@@ -50,7 +52,6 @@ export default function Page() {
     }
 
     try {
-      
       toast({
         title: "Sucesso!",
         description: "Senha alterada com sucesso!",
@@ -67,8 +68,7 @@ export default function Page() {
         variant: "destructive"
       });
     }
-  };
-
+};
   return (
     <section className="py-16">
       <Navbar />
@@ -115,13 +115,9 @@ export default function Page() {
                   </div>
                 </div>
                 <CardFooter className="w-full flex px-0 pb-0 pt-4">
-                  <Button
-                    className="bg-blue-700 w-full"
-                    type="submit"
-                    disabled={!isFormValid}
-                  >
-                    Alterar senha
-                  </Button>
+                <Button className="bg-blue-700 w-full" type="submit">
+    Alterar senha
+</Button>
                 </CardFooter>
               </form>
             </CardContent>

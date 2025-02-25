@@ -10,6 +10,7 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { RegisterCustomer } from "../registerCustomer/registerCustomer";
 import { SeadingPhotos } from "../seadingPhotos/seadingPhotos";
+import { EditarColaborador } from "../editarColaborador/editarColaborador";
 
 interface VerificarCPFClienteProps {
   setShowPreviousComponent: (value: boolean) => void;
@@ -20,13 +21,18 @@ export function VerificarCPFCliente({
   setShowPreviousComponent,
 }: VerificarCPFClienteProps) {
   const [showRegisterCustomer, setShowRegisterCustomer] = useState(false);
+  const [showSeadingPhotos, setShowSeadingPhotos] = useState(false);
 
   if (showRegisterCustomer) {
     return (
       <RegisterCustomer
         setShowPreviousComponent={setShowRegisterCustomer}
         previousComponent="verificarCPFCliente"
-        onContinueTo={<SeadingPhotos />}
+        onContinueTo={ <SeadingPhotos
+          setShowPreviousComponent={setShowSeadingPhotos}
+          previousComponent="registerCustomer"
+          onContinueTo={<EditarColaborador />}
+        />}
       />
     );
   }
@@ -72,7 +78,11 @@ export function VerificarCPFCliente({
         <RegisterCustomer
           setShowPreviousComponent={setShowRegisterCustomer}
           previousComponent="verificarCPFCliente"
-          onContinueTo={<SeadingPhotos />}
+          onContinueTo={ <SeadingPhotos
+            setShowPreviousComponent={setShowSeadingPhotos}
+            previousComponent="registerCustomer"
+            onContinueTo={<EditarColaborador />}
+          />}
         />
       )}
           

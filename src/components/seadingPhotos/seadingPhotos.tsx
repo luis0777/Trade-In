@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import {
   Accordion,
@@ -18,9 +20,29 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { useState } from "react";
+import React from "react";
 
-export function SeadingPhotos() {
-  return (
+interface SeadingPhotosProps {
+  setShowPreviousComponent: (value: boolean) => void;
+  previousComponent: string;
+  onContinueTo: React.ReactNode; // Nova prop que receberá o componente
+}
+
+export function SeadingPhotos({
+  setShowPreviousComponent,
+  previousComponent,
+  onContinueTo,
+}: SeadingPhotosProps) {
+  const [showNextComponent, setShowNextComponent] = React.useState(false);
+
+  const handleNext = () => {
+    setShowNextComponent(true);
+  };
+
+  return showNextComponent ? (
+    <>{onContinueTo}</>
+  ) : (
     <section className="py-16">
       <div className="w-full flex items-center justify-center">
         <div className="w-full px-48">
@@ -166,7 +188,11 @@ export function SeadingPhotos() {
                         <div className="w-full mt-10">
                           <div className="w-full h-40  flex justify-center items-center">
                             <div className="  ">
-                              <img src="quinta.jpg" alt="5° foto" />
+                              <img
+                                src="quinta.jpg"
+                                alt="5° foto"
+                                className="h-60"
+                              />
                             </div>
                           </div>
                           <div className="w-full h-40 flex-col flex justify-center items-center px-2 text-center ">
@@ -289,10 +315,10 @@ export function SeadingPhotos() {
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel className="  shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105  hover:shadow-xl">
+                <AlertDialogCancel className="  shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105  hover:shadow-xl" >
                   NÂO
                 </AlertDialogCancel>
-                <AlertDialogAction className=" bg-blue-600  shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105  hover:shadow-xl">
+                <AlertDialogAction className=" bg-blue-600  shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105  hover:shadow-xl" onClick={handleNext}>
                   SIM
                 </AlertDialogAction>
               </AlertDialogFooter>
