@@ -14,6 +14,7 @@ interface FormFieldProps {
   rows?: number;
   className?: string;
   onClick?: () => void;
+  password?: boolean;
 }
 
 export const FormField = ({
@@ -28,6 +29,7 @@ export const FormField = ({
   rows,
   className,
   onClick,
+  password = false,
 }: FormFieldProps) => {
   const [error, setError] = useState(false);
 
@@ -66,10 +68,12 @@ export const FormField = ({
         </select>
       ) : (
         <Input
+          type={password ? "password" : "text"}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
           className={error ? "border-red-500" : ""}
+          onClick={onClick}
         />
       )}
 

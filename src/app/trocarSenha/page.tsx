@@ -13,22 +13,26 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useState, useEffect } from "react";
 import { FormField } from "@/components/formField/formField";
+import { X, Check } from "lucide-react";
 
 export default function Page() {
   const { toast } = useToast();
   const [senhaAntiga, setSenhaAntiga] = useState("");
   const [senhaNova, setSenhaNova] = useState("");
   const [confirmeSenhaNova, setConfirmeSenhaNova] = useState("");
-
+  const [showErrors, setShowErrors] = useState(false);
+  const senhaTemOitoDigitos = senhaNova.length >= 8;
 
   const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!senhaAntiga || !senhaNova || !confirmeSenhaNova) {
+      setShowErrors(true);
       toast({
-        title: "Erro",
-        description: "Preencha todos os campos obrigatórios",
-        variant: "destructive"
+        title: "Falha!",
+        description: "Preencha os campos obrigatórios.",
+        duration: 2000,
+        className: "bg-red-500 text-white",
       });
       return;
     }
@@ -37,16 +41,19 @@ export default function Page() {
       toast({
         title: "Erro",
         description: "As senhas não coincidem",
-        variant: "destructive"
+        variant: "destructive",
       });
+      setSenhaNova("");
+      setConfirmeSenhaNova("");
+      setShowErrors(false);
       return;
     }
 
     if (senhaNova.length < 8) {
       toast({
-        title: "Erro", 
+        title: "Erro",
         description: "A senha deve ter no mínimo 8 caracteres",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
@@ -61,14 +68,15 @@ export default function Page() {
       setSenhaAntiga("");
       setSenhaNova("");
       setConfirmeSenhaNova("");
+      setShowErrors(false);
     } catch (error) {
       toast({
         title: "Erro",
         description: "Não foi possível alterar a senha",
-        variant: "destructive"
+        variant: "destructive",
       });
     }
-};
+  };
   return (
     <section className="py-16">
       <Navbar />
@@ -87,37 +95,55 @@ export default function Page() {
               <form onSubmit={handleChangePassword}>
                 <div className="grid w-full items-center gap-4">
                   <div className="flex flex-col space-y-1.5">
-                    <Input
-                      id="senhaAntiga"
-                      type="password"
-                      placeholder="Senha antiga"
+                    <FormField
+                      label="Senha Antiga"
+                      password={true}
                       value={senhaAntiga}
                       onChange={(e) => setSenhaAntiga(e.target.value)}
+                      placeholder="Senha antiga"
+                      className="cursor-pointer"
+                      required
+                      showError={showErrors}
                     />
-                  </div>
-                  <div className="flex flex-col space-y-1.5">
-                    <Input
-                      id="senhaNova"
-                      type="password"
-                      placeholder="Senha nova"
+
+                    <FormField
+                      label="Senha Nova"
+                      password={true}
                       value={senhaNova}
                       onChange={(e) => setSenhaNova(e.target.value)}
+                      placeholder="Senha nova"
+                      className="cursor-pointer"
+                      required
+                      showError={showErrors}
                     />
-                  </div>
-                  <div className="flex flex-col space-y-1.5">
-                    <Input
-                      id="senhaNovaConfirme"
-                      type="password"
-                      placeholder="Confirme a senha nova"
+
+                    <FormField
+                      label="Confirme a Senha Nova"
+                      password={true}
                       value={confirmeSenhaNova}
                       onChange={(e) => setConfirmeSenhaNova(e.target.value)}
+                      placeholder="Confirme a senha nova"
+                      className="cursor-pointer"
+                      required
+                      showError={showErrors}
                     />
+                  </div>
+                  <div>
+                    <b>Requisitos </b>
+                    <span
+                      className={`flex ${
+                        senhaTemOitoDigitos ? "text-green-600" : "text-red-600"
+                      }`}
+                    >
+                      {senhaTemOitoDigitos ? <Check /> : <X />} A senha deve ter
+                      8 digitos
+                    </span>
                   </div>
                 </div>
                 <CardFooter className="w-full flex px-0 pb-0 pt-4">
-                <Button className="bg-blue-700 w-full" type="submit">
-    Alterar senha
-</Button>
+                  <Button className="bg-blue-700 w-full" type="submit">
+                    Alterar senha
+                  </Button>
                 </CardFooter>
               </form>
             </CardContent>
