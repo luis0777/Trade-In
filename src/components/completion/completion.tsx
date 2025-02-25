@@ -87,9 +87,7 @@ export function Completion({
               </div>
             </div>
 
-            <CardTitle className="text-lg text-4xl ">
-              Cód da Compra #0003478
-            </CardTitle>
+            <CardTitle className=" text-4xl ">Cód da Compra #0003478</CardTitle>
             <CardDescription className="text-lg ">
               Obrigado! O seu pedido de compra foi finalizado com sucesso.
             </CardDescription>
@@ -168,7 +166,7 @@ export function Completion({
               <Button variant="outline">Inicio</Button>
             </Link>
 
-            <Button>Imprimir contrato</Button>
+            <Button onClick={handleNext}>Imprimir contrato</Button>
           </CardFooter>
         </Card>
       </div>

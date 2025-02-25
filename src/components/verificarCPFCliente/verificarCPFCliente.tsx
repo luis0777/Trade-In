@@ -12,6 +12,7 @@ import { RegisterCustomer } from "../registerCustomer/registerCustomer";
 import { SeadingPhotos } from "../seadingPhotos/seadingPhotos";
 import { Completion } from "../completion/completion";
 import { Confirmation } from "../confirmation/confirmation";
+import { Contract } from "../contract/contract";
 
 interface VerificarCPFClienteProps {
   setShowPreviousComponent: (value: boolean) => void;
@@ -42,7 +43,12 @@ export function VerificarCPFCliente({
                   <Completion
                     setShowPreviousComponent={setShowSeadingPhotos}
                     previousComponent="confirmation"
+                    onContinueTo={<Contract 
+                    
+                      setShowPreviousComponent={setShowSeadingPhotos}
+                    previousComponent="contract"
                     onContinueTo={null}
+                    />}
                   />
                 }
               />
@@ -102,12 +108,17 @@ export function VerificarCPFCliente({
                 <Confirmation
                   setShowPreviousComponent={setShowSeadingPhotos}
                   previousComponent="registerCustomer"
-
                   onContinueTo={
                     <Completion
                       setShowPreviousComponent={setShowSeadingPhotos}
                       previousComponent="confirmation"
-                      onContinueTo={null}
+                      onContinueTo={
+                        <Contract
+                          setShowPreviousComponent={setShowSeadingPhotos}
+                          previousComponent="contract"
+                          onContinueTo={null}
+                        />
+                      }
                     />
                   }
                 />
