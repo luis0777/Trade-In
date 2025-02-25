@@ -344,8 +344,7 @@ export function Confirmation({
                           </form>
                         </CardContent>
                         <CardFooter className="flex justify-end">
-                          <Button>
-                            {" "}
+                          <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             <ChevronLeft /> Voltar para Aparelho
                           </Button>
                         </CardFooter>
@@ -426,7 +425,7 @@ export function Confirmation({
         </CardContent>
         <CardFooter className="w-full flex justify-between ">
           <div className="w-[15%] ">
-            <Button className="bg-blue-700 text-white">
+            <Button className="w-32 bg-blue-600 font-semibold shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-xl">
               <ChevronLeft /> Voltar
             </Button>
           </div>
@@ -434,7 +433,7 @@ export function Confirmation({
           <div className="w-[70%] flex justify-end ">
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button className="w-60 bg-blue-600 text-lg font-semibold shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-110 hover:shadow-xl">
+                <Button className="w-32 bg-blue-600 font-semibold shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-xl">
                   <Check /> Finalizar
                 </Button>
               </AlertDialogTrigger>
