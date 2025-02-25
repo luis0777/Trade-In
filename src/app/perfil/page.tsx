@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/select";
 import { Calendar } from "@/components/ui/calendar";
 import { useToast } from "@/hooks/use-toast";
+import { FormField } from "@/components/formField/formField";
 
 export default function Perfil() {
   const { toast } = useToast();
@@ -44,8 +45,25 @@ export default function Perfil() {
 
   const [selectedReport, setSelectedReport] = useState<string>("");
 
-  const isFormValid = () => {
-    return selectedReport && dateStart && dateEnd;
+  const [showErrors, setShowErrors] = useState(false);
+
+  const handleSubmit = () => {
+    if (!selectedReport.trim()) {
+      setShowErrors(true);
+      toast({
+        title: "Falha!",
+        description: "Preencha os campos obrigatórios.",
+        duration: 2000,
+        className: "bg-red-500 text-white",
+      });
+      return;
+    }
+
+    toast({
+      title: "Sucesso!",
+      description: "Relatório gerado com sucesso.",
+      duration: 2000,
+    });
   };
 
   return (
@@ -100,24 +118,23 @@ export default function Perfil() {
                   <div className="grid w-full items-center gap-4">
                     <div className="flex flex-col space-y-1.5"></div>
                     <div className="flex flex-col space-y-1.5 justify-center items-center">
-                      <Select
-                        onValueChange={(value) => setSelectedReport(value)}
-                      >
-                        <SelectTrigger id="framework" className="w-1/2 ">
-                          <SelectValue placeholder="Selecione o tipo de relatório" />
-                        </SelectTrigger>
-                        <SelectContent position="popper" className="w-full ">
-                          <SelectItem value="next">
-                            Consultas de IMEI
-                          </SelectItem>
-                          <SelectItem value="sveltekit">Aparelhos</SelectItem>
-                          <SelectItem value="astro">TradeIl Geral</SelectItem>
-                          <SelectItem value="nuxt">
-                            TradeIl Cancelados
-                          </SelectItem>
-                          <SelectItem value="perdido">Trade Perdido</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <div className="w-1/2   ">
+                        <FormField
+                          label="Tipo de Relatório"
+                          type="select"
+                          value={selectedReport}
+                          onChange={(e) => setSelectedReport(e.target.value)}
+                          options={[
+                            { value: "next", label: "Consultas de IMEI" },
+                            { value: "sveltekit", label: "Aparelhos" },
+                            { value: "astro", label: "TradeIl Geral" },
+                            { value: "nuxt", label: "TradeIl Cancelados" },
+                            { value: "perdido", label: "Trade Perdido" },
+                          ]}
+                          required={true}
+                          showError={showErrors && !selectedReport}
+                        />
+                      </div>
 
                       <div className="w-1/2 flex flex-col justify-center relative ">
                         <b className="flex justify-center text-sm">
@@ -183,18 +200,7 @@ export default function Perfil() {
                 </form>
               </CardContent>
               <CardFooter className="flex justify-end">
-                <Button
-                  className="bg-blue-700 "
-                  disabled={!isFormValid()}
-                  onClick={() => {
-                    toast({
-                      title: "Erro!",
-                      description: "Em manutenção",
-                      className: "bg-red-600 text-white",
-                      duration: 2000,
-                    });
-                  }}
-                >
+                <Button className="bg-blue-700 " onClick={handleSubmit}>
                   Gerar relatórios
                 </Button>
               </CardFooter>

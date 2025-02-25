@@ -12,6 +12,8 @@ interface FormFieldProps {
   options?: { value: string; label: string }[];
   showError?: boolean; 
   rows?: number;
+  className?: string;
+  onClick?: () => void;
 }
 
 export const FormField = ({
@@ -24,6 +26,8 @@ export const FormField = ({
   options = [],
   showError = false,
   rows,
+  className,
+  onClick,
 }: FormFieldProps) => {
   const [error, setError] = useState(false);
 

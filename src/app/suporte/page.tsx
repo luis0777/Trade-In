@@ -23,17 +23,23 @@ export default function Page() {
   const handleSubmit = () => {
     if (!assunto.trim() || !descricao.trim()) {
       setShowErrors(true);
+      toast({
+        title: "Falha!",
+        description: "Preencha os campos obrigatórios.",
+        duration: 2000,
+        className: "bg-red-500 text-white",
+      });
       return;
     }
-    
+
     toast({
       title: "Sucesso!",
       description: "Aguarde o contato do suporte para resolver seu problema!",
       duration: 2000,
-      
     });
     setAssunto("");
-    setDescricao("");;
+    setDescricao("");
+    setShowErrors(false);
   };
 
   return (
