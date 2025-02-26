@@ -11,8 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { SidebarComponent } from "../sidebar/sidebar";
-
-
+import Link from "next/link";
 export function Navbar() {
   const [selectedValue, setSelectedValue] = React.useState("portuguesBR");
   
@@ -25,20 +24,26 @@ export function Navbar() {
             <SidebarComponent />
           </div>
           <div className="py-2">
-            <Image
+            <Link href="/novaCompra">
+              <Image
               src="/LogoAssurant.png"
               alt="Logo assurant"
               width={200}
               height={40}
               className="w-auto h-auto md:w-[300px]"
             />
+            </Link>
+            
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-white">
           <div className="flex items-center py-1 md:py-2">
             <Select value={selectedValue} onValueChange={setSelectedValue}>
-              <SelectTrigger className="w-[140px] md:w-[180px]" style={{ color: "white" }}>
+              <SelectTrigger
+                className="w-[140px] md:w-[180px]"
+                style={{ color: "white" }}
+              >
                 <SelectValue placeholder="Selecione um idioma" />
               </SelectTrigger>
               <SelectContent>
@@ -104,7 +109,7 @@ export function Navbar() {
                     Espanhol-MX
                   </SelectItem>
                 </SelectGroup>
-                </SelectContent>
+              </SelectContent>
             </Select>
           </div>
 
