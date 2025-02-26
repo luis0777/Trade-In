@@ -13,10 +13,10 @@ export default function NovaCompra() {
   ] as const;
 
   return (
-    <section className="py-20">
+    <section className="mt-48 ">
       <Navbar />
 
-      <div className="container mx-auto px-4 max-w-screen-xl  ">
+      <div className="container mx-auto  max-w-screen-xl  ">
         <div className="text-center">
           <b className="text-3xl sm:text-4xl pt-5">Tipos de dispositivos</b>
         </div>
@@ -24,25 +24,24 @@ export default function NovaCompra() {
           <b>Selecione o aparelho</b>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[50rem] w-full mx-auto ">
+        <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4  gap-8 lg:gap-44  max-w-[70rem] w-full  ">
           {devices.map((device, index) => (
             <div key={index} className=" p-4 mt-10 flex justify-center">
               <Link href={device.path} className="w-full">
-                <Button className="w-[100rem] h-auto max-w-xs ] bg-white text-black font-bold text-xl sm:text-2xl shadow-md hover:bg-slate-50 flex flex-col items-center">
+                <Button className="w-[100rem] h-auto max-w-xs  bg-white text-black font-bold text-xl sm:text-2xl shadow-md hover:bg-slate-50 flex flex-col items-center">
                   {device.name}
                   <Image
                     src={device.img}
                     alt={device.name}
                     width={300}
                     height={300}
-                    className="w-28 sm:w-36 md:w-44 lg:w-52 h-auto mt-2"
+                    className="w-28 sm:w-36 md:w-44 lg:w-52  h-auto mt-2 mx-auto sm:mx-0"
                   />
                 </Button>
               </Link>
             </div>
           ))}
         </div>
-        
       </div>
 
       <Footer />
