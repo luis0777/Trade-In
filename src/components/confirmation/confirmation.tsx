@@ -46,21 +46,19 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Link from "next/link";
 
 interface ConfirmationProps {
-  setShowPreviousComponent: (value: boolean) => void;
-  previousComponent: string;
-  onContinueTo: React.ReactNode; //
+
+  onContinueTo: () => void;
+  onPreviousTo: () => void;
+  
 }
 
 export function Confirmation({
-  setShowPreviousComponent,
-  previousComponent,
+
   onContinueTo,
+  onPreviousTo,
 }: ConfirmationProps) {
   const [date, setDate] = React.useState<Date>();
 
-  const handleNewPerson = () => {
-    setShowPreviousComponent(false);
-  };
 
   const [showNextComponent, setShowNextComponent] = React.useState(false);
 

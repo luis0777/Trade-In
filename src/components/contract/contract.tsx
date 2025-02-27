@@ -8,17 +8,16 @@ import {
 import SignatureCanvas from "react-signature-canvas";
 import { useRef } from "react";
 interface ContractProps {
-  setShowPreviousComponent: (value: boolean) => void;
-  previousComponent: string;
-  onContinueTo: React.ReactNode; //
+
+  onContinueTo: () => void;
+  
 }
 
 export function Contract({
-  setShowPreviousComponent,
-  previousComponent,
+  
   onContinueTo,
 }: ContractProps) {
-  const [showNextComponent, setShowNextComponent] = React.useState(false);
+  const [showNextComponent] = React.useState(false);
 
   const sigCanvas = useRef<SignatureCanvas | null>(null);
 

@@ -33,20 +33,22 @@ import { ChevronRight, ChevronLeft, RotateCw } from "lucide-react";
 
 interface RegisterCustomerProps {
   
-  setShowPreviousComponent: (value: boolean) => void;
-  previousComponent: string;
-  onContinueTo: React.ReactNode; //
+
+
+  onContinueTo: () => void; //
+  onPreviousTo: () => void;
 }
 
 export function RegisterCustomer({
-  setShowPreviousComponent,
-  previousComponent,
+
+  
   onContinueTo,
+  onPreviousTo,
 }: RegisterCustomerProps) {
   const [date, setDate] = React.useState<Date>();
 
   const handleNewPerson = () => {
-    setShowPreviousComponent(false);
+    
   };
 
   const [showNextComponent, setShowNextComponent] = React.useState(false);
