@@ -10,6 +10,7 @@ import { VerificarCPFCliente } from "../verificarCPFCliente/verificarCPFCliente"
 export const TradeInNavigation = () => {
   const [currentStep, setCurrentStep] = useState<"cpf" | "register" | "photos" | "confirmation" | "completion" | "contract" | "success">("cpf");
   console.log(currentStep);
+  console.log(currentStep);
   const renderStep = () => {
     console.log(currentStep);
     switch (currentStep) {
