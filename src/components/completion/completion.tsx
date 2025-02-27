@@ -36,21 +36,19 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 interface CompletionProps {
-  setShowPreviousComponent: (value: boolean) => void;
-  previousComponent: string;
-  onContinueTo: React.ReactNode; //
+
+  onContinueTo: () => void;
+  onPreviousTo: () => void;
 }
 
 export function Completion({
-  setShowPreviousComponent,
-  previousComponent,
+
   onContinueTo,
+  onPreviousTo,
 }: CompletionProps) {
   const [date, setDate] = React.useState<Date>();
 
-  const handleNewPerson = () => {
-    setShowPreviousComponent(false);
-  };
+ 
 
   const [showNextComponent, setShowNextComponent] = React.useState(false);
 

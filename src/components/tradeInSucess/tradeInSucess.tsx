@@ -88,7 +88,7 @@ export function TradeInSuccess() {
       {currentComponent === 'verificarCPF' && (
         <VerificarCPFCliente
           setShowPreviousComponent={() => handleNavigation('TradeInSuccess')}
-          previousComponent="TradeInSuccess"
+          
         />
       )}
     </>

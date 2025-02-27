@@ -20,28 +20,36 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { useState } from "react";
 import React from "react";
 
 interface SeadingPhotosProps {
-  setShowPreviousComponent: (value: boolean) => void;
-  previousComponent: string;
-  onContinueTo: React.ReactNode; // Nova prop que receberá o componente
+
+
+  onContinueTo: () => void;
+  onPreviousTo: () => void;
 }
 
 export function SeadingPhotos({
-  setShowPreviousComponent,
-  previousComponent,
+
+  
   onContinueTo,
+  onPreviousTo,
 }: SeadingPhotosProps) {
   const [showNextComponent, setShowNextComponent] = React.useState(false);
+  const [showPreviousComponent, setShowPrevComponent] = React.useState(false);
+  
 
   const handleNext = () => {
     setShowNextComponent(true);
   };
+  const handlePrevious = () => {
+    setShowPrevComponent(true)
+  };
 
   return showNextComponent ? (
     <>{onContinueTo}</>
+  ) : showPreviousComponent ? (
+    <>{onPreviousTo}</>
   ) : (
     <section className="py-16">
       <div className="w-full flex items-center justify-center">
@@ -292,7 +300,7 @@ export function SeadingPhotos({
       </div>
       <div className="w-full flex items-center justify-center">
         <div className="w-full flex flex-wrap items-center justify-center gap-16 p-8">
-          <Button className="w-60 bg-blue-600 text-lg font-semibold shadow-md flex items-center justify-center gaptransition-all duration-300 hover:scale-110 hover:shadow-xl">
+          <Button  className="w-60 bg-blue-600 text-lg font-semibold shadow-md flex items-center justify-center gaptransition-all duration-300 hover:scale-110 hover:shadow-xl" onClick={handlePrevious}>
             <ArrowBigLeft size={24} /> Voltar
           </Button>
 
