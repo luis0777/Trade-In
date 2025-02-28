@@ -13,15 +13,23 @@ export default function NovaCompra() {
   ] as const;
 
   return (
-    <section className="mt-48 ">
+    <section className="mt-40 ">
       <Navbar />
+
+      <div className="flex justify-center w-full py-5">
+        <ul className="steps steps-horizontal w-full max-w-screen-xl">
+          <li className="step ">Selecionar Aparelho</li>
+          <li className="step  ">Selecionar Condição</li>
+          <li className="step ">Cadastrar Cliente</li>
+          <li className="step ">Fotos do Aparelho</li>
+          <li className="step ">Finalizar</li>
+          <li className="step ">Imprimir Contrato</li>
+        </ul>
+      </div>
 
       <div className="container mx-auto  max-w-screen-xl  ">
         <div className="text-center">
-          <b className="text-3xl sm:text-4xl pt-5">Tipos de dispositivos</b>
-        </div>
-        <div className="text-center pt-2">
-          <b>Selecione o aparelho</b>
+          <b className="text-3xl sm:text-2xl pt-5">Tipos de dispositivos</b>
         </div>
 
         <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4  gap-8 lg:gap-44  max-w-[70rem] w-full  ">
