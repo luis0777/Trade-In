@@ -4,6 +4,7 @@ import { Navbar } from "@/components/navbar/navbar";
 import { SelecionarAparelho } from "@/components/selecionarAparelho/selecionarAparelho";
 import { useState } from "react";
 
+
 export default function NovaCompra() {
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -44,12 +45,12 @@ export default function NovaCompra() {
 
       <div className="flex justify-center w-full py-5">
         <ul className="steps steps-horizontal w-full max-w-screen-xl">
-          <li className={`step ${currentStep >= 0 ? 'step-primary' : ''}`}>Selecionar Aparelho</li>
-          <li className={`step ${currentStep >= 1 ? 'step-primary' : ''}`}>Selecionar Condição</li>
-          <li className={`step ${currentStep >= 2 ? 'step-primary' : ''}`}>Cadastrar Cliente</li>
-          <li className={`step ${currentStep >= 3 ? 'step-primary' : ''}`}>Fotos do Aparelho</li>
-          <li className={`step ${currentStep >= 4 ? 'step-primary' : ''}`}>Finalizar</li>
-          <li className={`step ${currentStep >= 5 ? 'step-primary' : ''}`}>Imprimir Contrato</li>
+          <li className={`step ${currentStep >= 0 ? 'step step-neutral' : ''}`}>Selecionar Aparelho</li>
+          <li className={`step ${currentStep >= 1 ? 'step step-neutral' : ''}`}>Selecionar Condição</li>
+          <li className={`step ${currentStep >= 2 ? 'step step-neutral' : ''}`}>Cadastrar Cliente</li>
+          <li className={`step ${currentStep >= 3 ? 'step step-neutral' : ''}`}>Fotos do Aparelho</li>
+          <li className={`step ${currentStep >= 4 ? 'step step-neutral' : ''}`}>Finalizar</li>
+          <li className={`step ${currentStep >= 5 ? 'step step-neutral' : ''}`}>Imprimir Contrato</li>
         </ul>
       </div>
 

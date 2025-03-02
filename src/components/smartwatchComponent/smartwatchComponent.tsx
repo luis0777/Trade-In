@@ -9,6 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { NotFoundItem } from "../notFoundItem/notFoundItem";
 
 export function SmartwatchComponent() {
   const [fabricante, setFabricante] = useState("");
@@ -52,7 +53,7 @@ export function SmartwatchComponent() {
     if (!tamanho) return null;
 
     if (tamanho === "40mm" || tamanho === "44mm") {
-      //   return <NotFoundItem />;
+        return <NotFoundItem />;
     }
 
     if (tamanho === "41mm" || tamanho === "45mm") {
@@ -72,6 +73,7 @@ export function SmartwatchComponent() {
 
   return (
     <div className=" w-full  flex items-center justify-center ">
+      {showForm ? (
       <Card className="w-[350px]">
         <CardHeader>
           <CardTitle>Identifique seu Smartwatch</CardTitle>
@@ -178,6 +180,9 @@ export function SmartwatchComponent() {
           </form>
         </CardContent>
       </Card>
+    ) : (
+        renderValorCard()
+      )}
     </div>
   );
 }
