@@ -35,6 +35,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useStep } from "@/context/StepContext";
+import { Contrato } from "../contrato/contrato";
 
 export function Completion() {
   const { setCurrentStep } = useStep();
@@ -52,6 +53,16 @@ export function Completion() {
   const handleValueChange = (value: string) => {
     setPosition(value);
     handleSelectChange({ target: { value } });
+  };
+
+  const[showContrato, setShowContrato] = useState(false);
+
+  if(showContrato){
+    return(<Contrato/>)
+  }
+
+  const handleShowContrato = () => {
+    setShowContrato(true);
   };
 
   return (
@@ -144,7 +155,7 @@ export function Completion() {
               <Button variant="outline" onClick={() => setCurrentStep(1)}>Inicio</Button>
             </Link>
 
-            <Button>Imprimir contrato</Button>
+            <Button onClick={handleShowContrato}>Imprimir contrato</Button>
           </CardFooter>
         </Card>
       </div>
