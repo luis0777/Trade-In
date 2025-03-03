@@ -5,10 +5,11 @@ import { SelecionarAparelho } from "@/components/selecionarAparelho/selecionarAp
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { DeviceCondition } from "@/components/deviceCondition/deviceCondition";
+import { useStep } from "@/context/StepContext";
 
 
 export default function NovaCompra() {
-  const [currentStep, setCurrentStep] = useState(0);
+  const { currentStep, setCurrentStep } = useStep();
   const [deviceType, setDeviceType] = useState('');
 
   const nextStep = () => {
