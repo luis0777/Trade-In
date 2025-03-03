@@ -1,20 +1,39 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useState } from "react";
-import { SmartwatchComponent } from "@/components/smartwatchComponent/smartwatchComponent"; // Importe seus componentes
+import { SmartwatchComponent } from "@/components/smartwatchComponent/smartwatchComponent";
 import { NotebookComponent } from "@/components/notebookComponent/notebookComponent";
 import { TabletComponent } from "@/components/tabletComponent/tabletComponent";
 import { SmartphoneComponent } from "@/components/smartphoneComponent/smartphoneComponent";
 
+interface SelecionarAparelhoProps {
+  toStep2: () => void;
+}
 
-export function SelecionarAparelho() {
-  const [selectedComponent, setSelectedComponent] = useState<JSX.Element | null>(null);
+export function SelecionarAparelho({ toStep2 }: SelecionarAparelhoProps) {
+  const [selectedComponent, setSelectedComponent] =
+    useState<JSX.Element | null>(null);
 
   const devices = [
-    { name: "Smartphone", img: "/Smartphone.png", component: <SmartphoneComponent /> },
-    { name: "Smartwatch", img: "/smartWatch.png", component: <SmartwatchComponent /> },
-    { name: "Notebook", img: "/notebook.png", component: <NotebookComponent /> },
-    { name: "Tablet", img: "/tablet.png", component: <TabletComponent /> },
+    {
+      name: "Smartphone",
+      img: "/Smartphone.png",
+      component: <SmartphoneComponent />,
+    },
+    {
+      name: "Smartwatch",
+      img: "/smartWatch.png",
+      component: <SmartwatchComponent toStep2={toStep2} />,
+    },
+    {
+      name: "Notebook",
+      img: "/notebook.png",
+      component: <NotebookComponent />,
+    },
+    { name: "Tablet",
+      img: "/tablet.png",
+      component: <TabletComponent /> 
+    },
   ] as const;
 
   const handleDeviceClick = (component: JSX.Element) => {
@@ -31,7 +50,7 @@ export function SelecionarAparelho() {
         {devices.map((device, index) => (
           <div key={index} className="p-4 mt-10 flex justify-center">
             <div className="w-full">
-              <Button 
+              <Button
                 onClick={() => handleDeviceClick(device.component)}
                 className="w-[100rem] h-auto max-w-xs bg-white text-black font-bold text-xl sm:text-2xl shadow-md hover:bg-slate-50 flex flex-col items-center"
               >
@@ -50,9 +69,7 @@ export function SelecionarAparelho() {
       </div>
 
       {/* Renderiza o componente selecionado */}
-      <div className="mt-8">
-        {selectedComponent}
-      </div>
+      <div className="mt-8">{selectedComponent}</div>
     </div>
   );
 }
