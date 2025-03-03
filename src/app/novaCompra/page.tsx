@@ -4,10 +4,12 @@ import { Navbar } from "@/components/navbar/navbar";
 import { SelecionarAparelho } from "@/components/selecionarAparelho/selecionarAparelho";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { DeviceCondition } from "@/components/deviceCondition/deviceCondition";
 
 
 export default function NovaCompra() {
   const [currentStep, setCurrentStep] = useState(0);
+  const [deviceType, setDeviceType] = useState('');
 
   const nextStep = () => {
     if (currentStep < 5) {
@@ -24,9 +26,11 @@ export default function NovaCompra() {
   const toStep1 = () => {
     setCurrentStep(0);
   };
-  const toStep2 = () => {
-    setCurrentStep(1);
-  };
+
+  const toStep2 = (type: string) => {
+  setDeviceType(type);
+  setCurrentStep(1);
+};
 
 
 
@@ -35,7 +39,7 @@ export default function NovaCompra() {
       case 0:
         return <SelecionarAparelho toStep2={toStep2} />;
       case 1:
-        return <div>Componente Selecionar Condição</div>;
+        return <div><DeviceCondition deviceType={deviceType}/></div>;
       case 2:
         return <div>Componente Cadastrar Cliente</div>;
       case 3:

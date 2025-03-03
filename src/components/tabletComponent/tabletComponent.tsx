@@ -12,7 +12,7 @@ import { NotFoundItem } from "../notFoundItem/notFoundItem";
 import { ProductEvaluation } from "../productEvaluation/productEvaluation";
 
 interface TabletComponentProps {
-  toStep2: () => void;
+  toStep2: (type: string) => void;
 }
 
 export function TabletComponent({ toStep2 }: TabletComponentProps) {
@@ -57,7 +57,7 @@ export function TabletComponent({ toStep2 }: TabletComponentProps) {
     if (cor === "Amarelo") {
       return <NotFoundItem />;
     } else {
-      return <ProductEvaluation toStep2={toStep2} />;
+      return <ProductEvaluation toStep2={() => toStep2('tablet')} />;
     }
   };
 

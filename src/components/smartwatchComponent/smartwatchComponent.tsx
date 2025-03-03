@@ -13,7 +13,7 @@ import { NotFoundItem } from "../notFoundItem/notFoundItem";
 import { ProductEvaluation } from "../productEvaluation/productEvaluation";
 
 interface SmartwatchComponentProps {
-  toStep2: () => void;
+  toStep2: (type: string) => void;
 }
 
 export function SmartwatchComponent({ toStep2 }: SmartwatchComponentProps) {
@@ -61,7 +61,7 @@ export function SmartwatchComponent({ toStep2 }: SmartwatchComponentProps) {
     }
 
     if (tamanho === "41mm" || tamanho === "45mm") {
-      return <ProductEvaluation toStep2={toStep2} />;
+      return <ProductEvaluation toStep2={() => toStep2('smartwatch')} />;
     }
   };
 

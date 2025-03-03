@@ -7,7 +7,7 @@ import { TabletComponent } from "@/components/tabletComponent/tabletComponent";
 import { SmartphoneComponent } from "@/components/smartphoneComponent/smartphoneComponent";
 
 interface SelecionarAparelhoProps {
-  toStep2: () => void;
+  toStep2: (type: string) => void;
 }
 
 export function SelecionarAparelho({ toStep2 }: SelecionarAparelhoProps) {
