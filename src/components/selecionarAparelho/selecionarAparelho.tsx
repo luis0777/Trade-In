@@ -32,7 +32,7 @@ export function SelecionarAparelho({ toStep2 }: SelecionarAparelhoProps) {
     },
     { name: "Tablet",
       img: "/tablet.png",
-      component: <TabletComponent /> 
+      component: <TabletComponent toStep2={toStep2}/> 
     },
   ] as const;
 
