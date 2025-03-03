@@ -276,7 +276,7 @@ export function RegisterCustomer() {
             </Button>
           </div>
           <div className="w-[70%] flex justify-end ">
-            <Button className="bg-blue-700 text-white">
+            <Button className="bg-blue-700 text-white" onClick={() => setCurrentStep(4)}>
               <ChevronRight /> Proximo
             </Button>
           </div>

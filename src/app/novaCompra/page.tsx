@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { DeviceCondition } from "@/components/deviceCondition/deviceCondition";
 import { useStep } from "@/context/StepContext";
 import { VerificaCPF } from "@/components/verificaCPF/verificaCPF";
+import { SeadingPhotos } from "@/components/seadingPhotos/seadingPhotos";
 
 export default function NovaCompra() {
   const { currentStep, setCurrentStep } = useStep();
@@ -46,7 +47,7 @@ export default function NovaCompra() {
       case 3:
         return <div><VerificaCPF/> </div>;
       case 4:
-        return <div>Componente Fotos do Aparelho</div>;
+        return <div><SeadingPhotos/> </div>;
       case 5:
         return <div>Componente Finalizar</div>;
       case 6:
