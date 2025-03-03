@@ -1,56 +1,108 @@
+"use client";
 import { Footer } from "@/components/footer/footer";
 import { Navbar } from "@/components/navbar/navbar";
+import { SelecionarAparelho } from "@/components/selecionarAparelho/selecionarAparelho";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import Link from "next/link";
+import { DeviceCondition } from "@/components/deviceCondition/deviceCondition";
+import { useStep } from "@/context/StepContext";
+import { VerificaCPF } from "@/components/verificaCPF/verificaCPF";
+import { SeadingPhotos } from "@/components/seadingPhotos/seadingPhotos";
+import { Ending } from "@/components/ending/ending";
+import { Completion } from "@/components/completion/completion";
 
 export default function NovaCompra() {
-  const devices = [
-    { name: "Smartphone", img: "/Smartphone.png", path: "/smartphone" },
-    { name: "Smartwatch", img: "/smartWatch.png", path: "/smartwatch" },
-    { name: "Notebook", img: "/notebook.png", path: "/notebook" },
-    { name: "Tablet", img: "/tablet.png", path: "/tablet" },
-  ] as const;
+  const { currentStep, setCurrentStep } = useStep();
+  const [deviceType, setDeviceType] = useState("");
+
+  const nextStep = () => {
+    if (currentStep < 5) {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  const previousStep = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
+  const toStep1 = () => {
+    setCurrentStep(0);
+  };
+
+  const toStep2 = (type: string) => {
+    setDeviceType(type);
+    setCurrentStep(2);
+  };
+
+  const renderStep = () => {
+    switch (currentStep) {
+      case 1:
+        return <SelecionarAparelho toStep2={toStep2} />;
+      case 2:
+        return (
+          <div>
+            <DeviceCondition deviceType={deviceType} />
+          </div>
+        );
+      case 3:
+        return (
+          <div>
+            <VerificaCPF />{" "}
+          </div>
+        );
+      case 4:
+        return (
+          <div>
+            <SeadingPhotos />{" "}
+          </div>
+        );
+      case 5:
+        return (
+          <div>
+            <Ending />{" "}
+          </div>
+        );
+      case 6:
+        return (
+          <div>
+            <Completion />{" "}
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
-    <section className="mt-40 ">
+    <section className="my-20">
       <Navbar />
 
       <div className="flex justify-center w-full py-5">
         <ul className="steps steps-horizontal w-full max-w-screen-xl">
-          <li className="step ">Selecionar Aparelho</li>
-          <li className="step  ">Selecionar Condição</li>
-          <li className="step ">Cadastrar Cliente</li>
-          <li className="step ">Fotos do Aparelho</li>
-          <li className="step ">Finalizar</li>
-          <li className="step ">Imprimir Contrato</li>
+          <li className={`step ${currentStep >= 1 ? "step step-neutral" : ""}`}>
+            Selecionar Aparelho
+          </li>
+          <li className={`step ${currentStep >= 2 ? "step step-neutral" : ""}`}>
+            Selecionar Condição
+          </li>
+          <li className={`step ${currentStep >= 3 ? "step step-neutral" : ""}`}>
+            Cadastrar Cliente
+          </li>
+          <li className={`step ${currentStep >= 4 ? "step step-neutral" : ""}`}>
+            Fotos do Aparelho
+          </li>
+          <li className={`step ${currentStep >= 5 ? "step step-neutral" : ""}`}>
+            Finalizar
+          </li>
+          <li className={`step ${currentStep >= 6 ? "step step-neutral" : ""}`}>
+            Imprimir Contrato
+          </li>
         </ul>
       </div>
 
-      <div className="container mx-auto  max-w-screen-xl  ">
-        <div className="text-center">
-          <b className="text-3xl sm:text-2xl pt-5">Tipos de dispositivos</b>
-        </div>
-
-        <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4  gap-8 lg:gap-44  max-w-[70rem] w-full  ">
-          {devices.map((device, index) => (
-            <div key={index} className=" p-4 mt-10 flex justify-center">
-              <Link href={device.path} className="w-full">
-                <Button className="w-[100rem] h-auto max-w-xs  bg-white text-black font-bold text-xl sm:text-2xl shadow-md hover:bg-slate-50 flex flex-col items-center">
-                  {device.name}
-                  <Image
-                    src={device.img}
-                    alt={device.name}
-                    width={300}
-                    height={300}
-                    className="w-28 sm:w-36 md:w-44 lg:w-52  h-auto mt-2 mx-auto sm:mx-0"
-                  />
-                </Button>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>
+      {renderStep()}
 
       <Footer />
     </section>
