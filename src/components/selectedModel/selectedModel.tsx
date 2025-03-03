@@ -24,7 +24,7 @@ import { useState } from "react";
 import { useStep } from "@/context/StepContext";
 
 export function SelectedModel() {
-    const { setCurrentStep } = useStep();
+  const { setCurrentStep } = useStep();
 
   return (
     <div className="w-full  flex items-center justify-center">

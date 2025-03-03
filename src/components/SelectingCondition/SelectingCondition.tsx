@@ -114,10 +114,10 @@ export function SelectingCondition() {
       </div>
 
       {selectedCard && (
-      <div className="mt-8">
-        <SelectedModel />
-      </div>
-    )}
+        <div className="mt-8">
+          <SelectedModel />
+        </div>
+      )}
 
       <div className="flex justify-between p-10">
         <Link href="/novaCompra">
@@ -128,12 +128,7 @@ export function SelectingCondition() {
             <ArrowBigLeft /> VOLTAR
           </Button>
         </Link>
-        
       </div>
-
-     
-
-
     </section>
   );
 }

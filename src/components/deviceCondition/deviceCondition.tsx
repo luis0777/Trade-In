@@ -1,4 +1,5 @@
 import { SelectingCondition } from "../SelectingCondition/SelectingCondition";
+import { SelectingConditionSmartwatch } from "@/components/selectingConditionSmartwatch/selectingConditionSmartwatch";
 
 interface DeviceConditionProps {
     deviceType: string;
@@ -9,7 +10,7 @@ export function DeviceCondition({ deviceType }: DeviceConditionProps) {
         <div className="container mx-auto px-4">
       {deviceType === 'smartwatch' ? (
         <div>
-          <h2>Condições para Smartwatch</h2>
+          <SelectingConditionSmartwatch />
           
         </div>
       ) : (
