@@ -11,7 +11,7 @@ const StepContext = createContext<StepContextProps | undefined>(undefined);
 
 
 export function StepProvider({ children }: { children: ReactNode }) {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
 
   return (
     <StepContext.Provider value={{ currentStep, setCurrentStep }}>

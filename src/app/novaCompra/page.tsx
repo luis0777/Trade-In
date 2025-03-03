@@ -30,24 +30,24 @@ export default function NovaCompra() {
 
   const toStep2 = (type: string) => {
   setDeviceType(type);
-  setCurrentStep(1);
+  setCurrentStep(2);
 };
 
 
 
   const renderStep = () => {
     switch (currentStep) {
-      case 0:
-        return <SelecionarAparelho toStep2={toStep2} />;
       case 1:
-        return <div><DeviceCondition deviceType={deviceType}/></div>;
+        return <SelecionarAparelho toStep2={toStep2} />;
       case 2:
-        return <div>Componente Cadastrar Cliente</div>;
+        return <div><DeviceCondition deviceType={deviceType}/></div>;
       case 3:
-        return <div>Componente Fotos do Aparelho</div>;
+        return <div>Componente Cadastrar Cliente</div>;
       case 4:
-        return <div>Componente Finalizar</div>;
+        return <div>Componente Fotos do Aparelho</div>;
       case 5:
+        return <div>Componente Finalizar</div>;
+      case 6:
         return <div>Componente Imprimir Contrato</div>;
       default:
         return null;
@@ -60,12 +60,12 @@ export default function NovaCompra() {
 
       <div className="flex justify-center w-full py-5">
         <ul className="steps steps-horizontal w-full max-w-screen-xl">
-          <li className={`step ${currentStep >= 0 ? 'step step-neutral' : ''}`}>Selecionar Aparelho</li>
-          <li className={`step ${currentStep >= 1 ? 'step step-neutral' : ''}`}>Selecionar Condição</li>
-          <li className={`step ${currentStep >= 2 ? 'step step-neutral' : ''}`}>Cadastrar Cliente</li>
-          <li className={`step ${currentStep >= 3 ? 'step step-neutral' : ''}`}>Fotos do Aparelho</li>
-          <li className={`step ${currentStep >= 4 ? 'step step-neutral' : ''}`}>Finalizar</li>
-          <li className={`step ${currentStep >= 5 ? 'step step-neutral' : ''}`}>Imprimir Contrato</li>
+          <li className={`step ${currentStep >= 1 ? 'step step-neutral' : ''}`}>Selecionar Aparelho</li>
+          <li className={`step ${currentStep >= 2 ? 'step step-neutral' : ''}`}>Selecionar Condição</li>
+          <li className={`step ${currentStep >= 3 ? 'step step-neutral' : ''}`}>Cadastrar Cliente</li>
+          <li className={`step ${currentStep >= 4 ? 'step step-neutral' : ''}`}>Fotos do Aparelho</li>
+          <li className={`step ${currentStep >= 5 ? 'step step-neutral' : ''}`}>Finalizar</li>
+          <li className={`step ${currentStep >= 6 ? 'step step-neutral' : ''}`}>Imprimir Contrato</li>
         </ul>
         {/* <Button onClick={previousStep} className="btn btn-primary">Voltar</Button>
         <Button onClick={nextStep} className="btn btn-primary">Avançar</Button>
