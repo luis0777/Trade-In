@@ -9,6 +9,7 @@ import { useStep } from "@/context/StepContext";
 import { VerificaCPF } from "@/components/verificaCPF/verificaCPF";
 import { SeadingPhotos } from "@/components/seadingPhotos/seadingPhotos";
 import { Ending } from "@/components/ending/ending";
+import { Completion } from "@/components/completion/completion";
 
 export default function NovaCompra() {
   const { currentStep, setCurrentStep } = useStep();
@@ -46,13 +47,29 @@ export default function NovaCompra() {
           </div>
         );
       case 3:
-        return <div><VerificaCPF/> </div>;
+        return (
+          <div>
+            <VerificaCPF />{" "}
+          </div>
+        );
       case 4:
-        return <div><SeadingPhotos/> </div>;
+        return (
+          <div>
+            <SeadingPhotos />{" "}
+          </div>
+        );
       case 5:
-        return <div><Ending/> </div>;
+        return (
+          <div>
+            <Ending />{" "}
+          </div>
+        );
       case 6:
-        return <div>Componente Imprimir Contrato</div>;
+        return (
+          <div>
+            <Completion />{" "}
+          </div>
+        );
       default:
         return null;
     }
@@ -83,9 +100,6 @@ export default function NovaCompra() {
             Imprimir Contrato
           </li>
         </ul>
-        {/* <Button onClick={previousStep} className="btn btn-primary">Voltar</Button>
-        <Button onClick={nextStep} className="btn btn-primary">Avançar</Button>
-        <Button onClick={toStep1} className="btn btn-primary">Voltar ao Inicio</Button> */}
       </div>
 
       {renderStep()}
